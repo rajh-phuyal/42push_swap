@@ -6,7 +6,7 @@
 #    By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/02 15:13:33 by rphuyal           #+#    #+#              #
-#    Updated: 2023/01/02 18:38:17 by rphuyal          ###   ########.fr        #
+#    Updated: 2023/01/03 18:00:25 by rphuyal          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ LIBFT_INCLUDE = -I$(LIBFT_DIR)
 LINK_PATH = -L $(LIBFT_DIR) -lft
 
 SRC = src/main.c \
+		src/inputs.c \
 
 OBJ = $(SRC:.c=.o)
 
@@ -36,7 +37,7 @@ libft:
 		@make -sC $(LIBFT_DIR)
 		@echo "$(GREEN)Built libft!$(RESET)"
 	
-$(NAME):    $(LIBFT)
+$(NAME):    $(libft)
 		@@$(CC) $(CFLAGS) -o $(NAME) $(SRC) $(LIBFT_INCLUDE) $(LINK_PATH)
 		@echo "$(GREEN)Compilation successful!$(RESET)"
 		

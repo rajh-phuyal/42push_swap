@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/02 17:42:59 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/01/02 20:16:59 by rphuyal          ###   ########.fr       */
+/*   Created: 2023/01/03 18:05:50 by rphuyal           #+#    #+#             */
+/*   Updated: 2023/01/03 18:48:14 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,23 +16,24 @@
 # include "../libft/libft.h"
 
 /* 
-structure for nodes to contain a pointer to the
-next and previous nodes and a value.
+structure for nodes to contain a int
+an a link to the next node
 */
-typedef struct double_link
+typedef struct single_link
 {
-	int					value;
-	struct double_link	*previous;
-	struct double_link	*next;
-}	t_double_link;
+	int				value;
+	struct s_list	*next;
+}	t_single_link;
 
+/* keeps track of contents of an inividual stack*/
 typedef struct stack
 {
 	int					size;
-	struct double_link	*head;
-	struct double_link	*tail;
+	struct single_link	*head;
+	struct single_link	*tail;
 } t_stack;
 
+/* keeps track of both stacks */
 typedef struct carrier
 {
 	struct stack	*stackA;
@@ -41,6 +42,9 @@ typedef struct carrier
 
 /* main */
 int	main(int argc, char **argv);
+
+/* cleaning the inputs*/
+int	clean_inputs(int count, char **numbers);
 
 /* treating the inputs */
 

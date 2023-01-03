@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 15:14:43 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/01/02 20:59:50 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/01/03 18:02:42 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 int	main(int argc, char **argv)
 {
-	
-	
 	if (argc > 1)
 	{
 		if (!clean_inputs(argc, argv))
