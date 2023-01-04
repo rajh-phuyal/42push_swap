@@ -6,28 +6,31 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 18:32:21 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/01/03 18:08:13 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/01/04 21:04:51 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/push_swap.h"
+#include "../includes/push_swap.h"
 
 int	clean_inputs(int count, char **numbers)
 {
 	int	i;
 	int	save;
-	
+
 	i = 1;
 	while (i < count)
 	{
 		save = ft_atoi(numbers[i]);
-		if (!save)
+		if (save || ft_strncmp(numbers[i], "0", ft_strlen(numbers[i])) == 0)
+		{
+			ft_printf(" %s\n", numbers[i]);
+			i++;
+		}
+		else
 		{
 			ft_printf("Error\n");
-			return (1);
+			return (0);
 		}
-		ft_printf("  %s\n", numbers[i]);
-		i++;
 	}
-	return (0);
+	return (1);
 }

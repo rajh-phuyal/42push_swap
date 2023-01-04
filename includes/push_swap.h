@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 18:05:50 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/01/03 18:48:14 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/01/04 21:05:51 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ an a link to the next node
 */
 typedef struct single_link
 {
-	int				value;
-	struct s_list	*next;
+	int					value;
+	struct single_link	*next;
 }	t_single_link;
 
 /* keeps track of contents of an inividual stack*/
@@ -31,14 +31,14 @@ typedef struct stack
 	int					size;
 	struct single_link	*head;
 	struct single_link	*tail;
-} t_stack;
+}	t_stack;
 
 /* keeps track of both stacks */
 typedef struct carrier
 {
 	struct stack	*stackA;
 	struct stack	*stackB;
-} t_carrier;
+}	t_carrier;
 
 /* main */
 int	main(int argc, char **argv);
