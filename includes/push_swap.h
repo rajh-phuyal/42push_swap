@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 18:05:50 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/01/04 21:05:51 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/01/06 21:02:32 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,11 @@ typedef struct carrier
 }	t_carrier;
 
 /* main */
-int	main(int argc, char **argv);
+int		main(int argc, char **argv);
 
 /* cleaning the inputs*/
-int	clean_inputs(int count, char **numbers);
+int		clean_inputs(int count, char **numbers);
+bool	check_int_range(char *str);
 
 /* treating the inputs */
 

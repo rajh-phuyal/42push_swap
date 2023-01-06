@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 15:14:43 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/01/04 16:59:12 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/01/06 19:42:29 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int	main(int argc, char **argv)
 	{
 		if (!clean_inputs(argc, argv))
 			return (0);
+		ft_printf("OK\n");
 	}
 	else
 		return (0);
