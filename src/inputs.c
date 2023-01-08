@@ -3,28 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   inputs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
+/*   By: nexus <nexus@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 18:32:21 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/01/06 21:03:23 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/01/08 23:40:19 by nexus            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-bool	check_int_range(char *str)
+bool	check_int_range(int num, char *str)
 {
 	int	len;
 
 	len = ft_strlen(str);
-	if (len == 10 && !ft_strncmp(str, "2147483647", len))
-		return (true);
+	if (len >= 10)
+	{
+		if (num >= INT_MAX && ft_strncmp(str, "2147483647", len))
+			return (false);
+		else if (num <= INT_MIN && ft_strncmp(str, "-2147483648", len))
+			return (false);
+		else
+			return (true);
+	}
 	else
-		return (false)
-	if (len == 11 && !ft_strncmp(str, "-2147483648", len))
 		return (true);
-	else
-		return (false);
 }
 
 int	clean_inputs(int count, char **numbers)
@@ -38,7 +41,7 @@ int	clean_inputs(int count, char **numbers)
 		save = ft_atoi(numbers[i]);
 		ft_printf("save: %i \n", save);
 		if ((save || !ft_strncmp(numbers[i], "0", ft_strlen(numbers[i]))) \
-				&& check_int_range(numbers[i]))
+				&& check_int_range(save, numbers[i]))
 			i++;
 		else
 		{

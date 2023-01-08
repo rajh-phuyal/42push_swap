@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
+/*   By: nexus <nexus@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 18:05:50 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/01/06 21:02:32 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/01/08 23:38:16 by nexus            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int		main(int argc, char **argv);
 
 /* cleaning the inputs*/
 int		clean_inputs(int count, char **numbers);
-bool	check_int_range(char *str);
+bool	check_int_range(int num, char *str);
 
 /* treating the inputs */
 
