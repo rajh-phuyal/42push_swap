@@ -6,7 +6,7 @@
 /*   By: nexus <nexus@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 18:05:50 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/01/08 23:38:16 by nexus            ###   ########.fr       */
+/*   Updated: 2023/01/09 00:04:40 by nexus            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,8 @@ int		main(int argc, char **argv);
 
 /* cleaning the inputs*/
 int		clean_inputs(int count, char **numbers);
-bool	check_int_range(int num, char *str);
+bool	int_within_range(int num, char *str);
+bool	no_random_chars(char *str);
 
 /* treating the inputs */
 

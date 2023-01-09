@@ -6,13 +6,13 @@
 /*   By: nexus <nexus@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 18:32:21 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/01/08 23:40:19 by nexus            ###   ########.fr       */
+/*   Updated: 2023/01/09 00:06:56 by nexus            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-bool	check_int_range(int num, char *str)
+bool	int_within_range(int num, char *str)
 {
 	int	len;
 
@@ -30,6 +30,19 @@ bool	check_int_range(int num, char *str)
 		return (true);
 }
 
+bool	no_random_chars(char *str)
+{
+	if (*str == '-')
+		str++;
+	while (*str)
+	{
+		if (!ft_isdigit(*str))
+			return (false);
+		str++;
+	}
+	return (true);
+}
+
 int	clean_inputs(int count, char **numbers)
 {
 	int	i;
@@ -39,9 +52,8 @@ int	clean_inputs(int count, char **numbers)
 	while (i < count)
 	{
 		save = ft_atoi(numbers[i]);
-		ft_printf("save: %i \n", save);
 		if ((save || !ft_strncmp(numbers[i], "0", ft_strlen(numbers[i]))) \
-				&& check_int_range(save, numbers[i]))
+		&& int_within_range(save, numbers[i]) && no_random_chars(numbers[i]))
 			i++;
 		else
 		{
