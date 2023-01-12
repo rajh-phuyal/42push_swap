@@ -3,25 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   inputs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nexus <nexus@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 18:32:21 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/01/09 00:06:56 by nexus            ###   ########.fr       */
+/*   Updated: 2023/01/12 01:47:46 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
+/* standard atoi return the int edges if the value exiceeds the int range,
+if the atoi returns int min or int max, we can use the string used for atoi 
+to validate if endeed the string contained int min or int max.*/
 bool	int_within_range(int num, char *str)
 {
-	int	len;
-
-	len = ft_strlen(str);
-	if (len >= 10)
+	if (ft_strlen(str) >= 10)
 	{
-		if (num >= INT_MAX && ft_strncmp(str, "2147483647", len))
+		if (num >= INT_MAX && ft_strncmp(str, "2147483647", 11))
 			return (false);
-		else if (num <= INT_MIN && ft_strncmp(str, "-2147483648", len))
+		else if (num <= INT_MIN && ft_strncmp(str, "-2147483648", 12))
 			return (false);
 		else
 			return (true);
@@ -30,6 +30,9 @@ bool	int_within_range(int num, char *str)
 		return (true);
 }
 
+/* caution with the char that might be mixed up between digits,
+since atoi returns the first int it discovers in a given string
+leaving the remaining chars that comes after*/
 bool	no_random_chars(char *str)
 {
 	if (*str == '-')
@@ -43,23 +46,55 @@ bool	no_random_chars(char *str)
 	return (true);
 }
 
-int	clean_inputs(int count, char **numbers)
+/* well, check for duplicate ints*/
+int	duplicate_inputs(t_carrier *pigeons)
 {
-	int	i;
-	int	save;
+	t_stack	*head;
+	t_stack	*iterator;
 
-	i = 1;
+	head = pigeons->head_a;
+	while (head)
+	{
+		iterator = head->next;
+		while (iterator)
+		{
+			if (head->value == iterator->value)
+				return (ft_printf("Error\n") - 6);
+			iterator = iterator->next;
+		}
+		head = head->next;
+	}
+	return (1);
+}
+
+/* Two in one function, validates the inputs while 
+simultaneously creating stack a. All the input validation 
+functions above are called from here for each argument*/
+int	clean_inputs(int i, int count, char **numbers, t_carrier *pigeons)
+{
+	int		save;
+	t_stack	*node;
+
+	node = NULL;
 	while (i < count)
 	{
 		save = ft_atoi(numbers[i]);
 		if ((save || !ft_strncmp(numbers[i], "0", ft_strlen(numbers[i]))) \
 		&& int_within_range(save, numbers[i]) && no_random_chars(numbers[i]))
+		{
+			node = push(save, node);
+			if (i == 1)
+				pigeons->tail_a = node;
+			if (i + 1 == count)
+				pigeons->head_a = node;
 			i++;
+		}
 		else
 		{
-			ft_printf("Error\n");
-			return (0);
+			if (node)
+				pigeons->head_a = node;
+			return (ft_printf("Error\n") - 6);
 		}
 	}
-	return (1);
+	return (duplicate_inputs(pigeons));
 }

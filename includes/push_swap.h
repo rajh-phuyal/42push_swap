@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nexus <nexus@student.42.fr>                +#+  +:+       +#+        */
+/*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 18:05:50 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/01/09 00:04:40 by nexus            ###   ########.fr       */
+/*   Updated: 2023/01/12 01:38:55 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,35 +19,39 @@
 structure for nodes to contain a int
 an a link to the next node
 */
-typedef struct single_link
-{
-	int					value;
-	struct single_link	*next;
-}	t_single_link;
-
-/* keeps track of contents of an inividual stack*/
 typedef struct stack
 {
-	int					size;
-	struct single_link	*head;
-	struct single_link	*tail;
+	int				value;
+	struct stack	*next;
 }	t_stack;
 
 /* keeps track of both stacks */
 typedef struct carrier
 {
-	struct stack	*stackA;
-	struct stack	*stackB;
+	int				size_a;
+	int				size_b;
+	struct stack	*head_a;
+	struct stack	*tail_a;
+	struct stack	*head_b;
+	struct stack	*tail_b;
 }	t_carrier;
 
 /* main */
 int		main(int argc, char **argv);
 
 /* cleaning the inputs*/
-int		clean_inputs(int count, char **numbers);
+int		clean_inputs(int i, int count, char **numbers, t_carrier *pigeons);
 bool	int_within_range(int num, char *str);
 bool	no_random_chars(char *str);
+int		duplicate_inputs(t_carrier *pigeons);
 
-/* treating the inputs */
+/* exit */
+int		free_pigeons(t_carrier *pigeons);
+
+/* basic stack operations */
+int		is_stack_sorted(t_carrier *pigeons);
+t_stack	*push(int num, t_stack *head);
+t_stack	*pop(t_stack *head);
+int		stack_size(t_stack *lst);
 
 #endif

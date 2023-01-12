@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 18:22:43 by rphuyal           #+#    #+#             */
-/*   Updated: 2022/12/29 19:43:35 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/01/11 15:10:43 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,10 @@ static void	print_conversions(char c, va_list args_ptr, int *flength)
 	else if (c == '%')
 		*flength += write(1, "%", 1);
 	if (str)
+	{
 		*flength += ft_putstr(str);
+		free(str);
+	}
 }
 
 int	ft_printf(const char *str, ...)
@@ -72,4 +75,3 @@ int	ft_printf(const char *str, ...)
 	va_end(args_ptr);
 	return (flenght);
 }
-

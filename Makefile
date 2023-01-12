@@ -6,7 +6,7 @@
 #    By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/02 15:13:33 by rphuyal           #+#    #+#              #
-#    Updated: 2023/01/03 18:00:25 by rphuyal          ###   ########.fr        #
+#    Updated: 2023/01/12 01:39:13 by rphuyal          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ LINK_PATH = -L $(LIBFT_DIR) -lft
 
 SRC = src/main.c \
 		src/inputs.c \
+		src/stack_exclusive.c \
 
 OBJ = $(SRC:.c=.o)
 
