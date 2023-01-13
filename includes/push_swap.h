@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 18:05:50 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/01/12 20:19:21 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/01/13 15:56:48 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ int		stack_size(t_stack *lst);
 
 /* provided operations to use on the two stack*/
 /* swap */
-void	sa(t_carrier *pigeons);
-void	sb(t_carrier *pigeons);
+void	sa(t_carrier *pigeons, int redirected);
+void	sb(t_carrier *pigeons, int redirected);
 void	ss(t_carrier *pigeons);
 
 /* push */
@@ -65,13 +65,13 @@ void	pa(t_carrier *pigeons);
 void	pb(t_carrier *pigeons);
 
 /* rotate */
-void	ra(t_carrier *pigeons);
-void	rb(t_carrier *pigeons);
+void	ra(t_carrier *pigeons, int redirected);
+void	rb(t_carrier *pigeons, int redirected);
 void	rr(t_carrier *pigeons);
 
 /* reverse rotate */
-void	rra(t_carrier *pigeons);
-void	rrb(t_carrier *pigeons);
+void	rra(t_carrier *pigeons, int redirected);
+void	rrb(t_carrier *pigeons, int redirected);
 void	rrr(t_carrier *pigeons);
 
 /* end */

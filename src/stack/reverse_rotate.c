@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 14:54:56 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/01/12 20:31:08 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/01/13 15:59:01 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /* pushes the bottom of the stack a to top of the stack a 
 shifting all the elements down one index. */
-void	rra(t_carrier *pigeons)
+void	rra(t_carrier *pigeons, int redirected)
 {
 	t_stack	*temp;
 
@@ -32,12 +32,13 @@ void	rra(t_carrier *pigeons)
 		}
 		temp = temp->next;
 	}
-	ft_printf("rra\n");
+	if (!redirected)
+		ft_printf("rra\n");
 }
 
 /* pushes the bottom of the stack b to top of the stack b 
 shifting all other elements down one index. */
-void	rrb(t_carrier *pigeons)
+void	rrb(t_carrier *pigeons, int redirected)
 {
 	t_stack	*temp;
 
@@ -55,14 +56,16 @@ void	rrb(t_carrier *pigeons)
 		}
 		temp = temp->next;
 	}
-	ft_printf("rrb\n");
+	if (!redirected)
+		ft_printf("rrb\n");
 }
 
 /* call both */
 void	rrr(t_carrier *pigeons)
 {
 	if (pigeons->head_a)
-		rra(pigeons);
+		rra(pigeons, 1);
 	if (pigeons->head_b)
-		rrb(pigeons);
+		rrb(pigeons, 1);
+	ft_printf("rrr\n");
 }
