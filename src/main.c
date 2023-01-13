@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 15:14:43 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/01/13 18:24:06 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/01/13 20:05:03 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	main(int argc, char **argv)
 	{
 		if (!clean_input(argc, argc, argv, pigeons) || is_stack_sorted(pigeons))
 			return (free_pigeons(pigeons));
+		the_sorting_portal(pigeons);
 		free_pigeons(pigeons);
 		ft_printf("INPUTS OK\n");
 	}
