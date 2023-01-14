@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 18:05:50 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/01/13 15:56:48 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/01/14 02:08:15 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,5 +75,8 @@ void	rrb(t_carrier *pigeons, int redirected);
 void	rrr(t_carrier *pigeons);
 
 /* end */
+
+/* sort */
+void	the_sorting_portal(t_carrier *pigeons);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/02 15:13:33 by rphuyal           #+#    #+#              #
-#    Updated: 2023/01/12 20:51:11 by rphuyal          ###   ########.fr        #
+#    Updated: 2023/01/14 02:09:08 by rphuyal          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ SRC = src/main.c \
 		src/stack/push.c \
 		src/stack/rotate.c \
 		src/stack/reverse_rotate.c \
+		src/algorithm/the_sorting_portal.c \	
 
 OBJ = $(SRC:.c=.o)
 
