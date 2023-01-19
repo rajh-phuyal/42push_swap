@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 20:10:50 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/01/14 02:07:57 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/01/16 15:56:34 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,6 @@
 
 void	the_sorting_portal(t_carrier *pigeons)
 {
+	pigeons->size_a--;
 	return ;
 }
