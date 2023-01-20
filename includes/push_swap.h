@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 18:05:50 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/01/14 02:08:15 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/01/20 19:03:12 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,19 +40,26 @@ typedef struct carrier
 int		main(int argc, char **argv);
 
 /* cleaning the inputs*/
-int		clean_input(int i, int count, char **numbers, t_carrier *pigeons);
+bool	validate_input(int save, char *str);
 bool	int_within_range(int num, char *str);
 bool	no_random_chars(char *str);
 int		duplicate_inputs(t_carrier *pigeons);
+int		clean_input(int i, int count, char **numbers, t_carrier *pigeons);
 
 /* exit */
 int		free_pigeons(t_carrier *pigeons);
 
+/* utils */
+void	print_stack(t_stack *head);
+int		find_index(char **argv);
+/* end */
+
+/* stack */
 /* basic stack operations */
+int		stack_size(t_stack *lst);
 int		is_stack_sorted(t_carrier *pigeons);
 t_stack	*push(int num, t_stack *head);
 t_stack	*pop(t_stack *head);
-int		stack_size(t_stack *lst);
 
 /* provided operations to use on the two stack*/
 /* swap */
@@ -73,10 +80,10 @@ void	rr(t_carrier *pigeons);
 void	rra(t_carrier *pigeons, int redirected);
 void	rrb(t_carrier *pigeons, int redirected);
 void	rrr(t_carrier *pigeons);
-
 /* end */
 
-/* sort */
+/* algorithm */
 void	the_sorting_portal(t_carrier *pigeons);
+/* end */
 
 #endif

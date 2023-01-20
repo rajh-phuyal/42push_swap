@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 18:32:21 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/01/12 20:55:36 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/01/20 18:49:21 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,25 +67,37 @@ int	duplicate_inputs(t_carrier *pigeons)
 	return (1);
 }
 
+/*All the input validation 
+functions above are called from here for each argument*/
+bool	validate_input(int save, char *str)
+{
+	if ((save || !ft_strncmp(str, "0", ft_strlen(str))) \
+		&& int_within_range(save, str) && no_random_chars(str))
+		return (true);
+	else
+		return (false);
+}
+
 /* Two in one function, validates the inputs while 
 simultaneously creating stack a. All the input validation 
 functions above are called from here for each argument*/
 int	clean_input(int i, int count, char **numbers, t_carrier *pigeons)
 {
 	int		save;
+	int		start;
 	t_stack	*node;
 
 	node = NULL;
-	while (--i > 0)
+	start = find_index(numbers);
+	while (--i >= start)
 	{
 		save = ft_atoi(numbers[i]);
-		if ((save || !ft_strncmp(numbers[i], "0", ft_strlen(numbers[i]))) \
-		&& int_within_range(save, numbers[i]) && no_random_chars(numbers[i]))
+		if (validate_input(save, numbers[i]))
 		{
 			node = push(save, node);
 			if (i + 1 == count)
 				pigeons->tail_a = node;
-			if (i - 1 == 0)
+			if (i == start)
 				pigeons->head_a = node;
 		}
 		else

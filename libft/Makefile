@@ -6,7 +6,7 @@
 #    By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/02 16:15:26 by rphuyal           #+#    #+#              #
-#    Updated: 2023/01/02 17:04:16 by rphuyal          ###   ########.fr        #
+#    Updated: 2023/01/19 19:09:58 by rphuyal          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,6 +37,7 @@ SRC    = strings/ft_atoi.c \
 		fd_insert/ft_putstr_fd.c \
 		fd_insert/ft_putnbr_fd.c\
 		strings/ft_strchr.c \
+		strings/ft_split_len.c \
 		strings/ft_strlcpy.c \
 		strings/ft_strmapi.c\
 		strings/ft_strdup.c \

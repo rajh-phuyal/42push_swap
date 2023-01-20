@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   the_sorting_portal.c                               :+:      :+:    :+:   */
+/*   find_index.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/13 20:10:50 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/01/20 18:55:54 by rphuyal          ###   ########.fr       */
+/*   Created: 2023/01/20 18:38:06 by rphuyal           #+#    #+#             */
+/*   Updated: 2023/01/20 18:50:05 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h" 
+#include "../includes/push_swap.h"
 
-void	the_sorting_portal(t_carrier *pigeons)
+int	find_index(char **argv)
 {
-	pigeons->size_a = stack_size(pigeons->head_a);
-	if (pigeons->head_a > pigeons->head_a->next)
-		sa(pigeons, 0);
-	return ;
+	if (!ft_strncmp(argv[0], "./push_swap", 12))
+		return (1);
+	else
+		return (0);
 }

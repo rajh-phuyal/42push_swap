@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 16:15:19 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/01/02 17:45:29 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/01/19 19:09:42 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void	*ft_memchr(const void *str, int c, size_t n);
 /* functions that manipulate, concatiante, compare, etc with strings*/
 int		ft_atoi(const char *str);
 int		ft_strlen(const char *str);
+int		ft_split_len(char **argv);
 int		ft_strncmp(const char *s1, const char *s2, size_t num);
 char	*ft_itoa(int n);
 char	*ft_strdup(const char *s);

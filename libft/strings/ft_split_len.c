@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   the_sorting_portal.c                               :+:      :+:    :+:   */
+/*   ft_spilt_len.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/13 20:10:50 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/01/20 18:55:54 by rphuyal          ###   ########.fr       */
+/*   Created: 2023/01/19 19:08:57 by rphuyal           #+#    #+#             */
+/*   Updated: 2023/01/19 19:09:15 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h" 
+#include "../libft.h"
 
-void	the_sorting_portal(t_carrier *pigeons)
+int	ft_split_len(char **argv)
 {
-	pigeons->size_a = stack_size(pigeons->head_a);
-	if (pigeons->head_a > pigeons->head_a->next)
-		sa(pigeons, 0);
-	return ;
+	int	i;
+
+	i = 1;
+	while (argv[i])
+		i++;
+	return (i);
 }

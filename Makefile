@@ -6,7 +6,7 @@
 #    By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/02 15:13:33 by rphuyal           #+#    #+#              #
-#    Updated: 2023/01/16 15:55:59 by rphuyal          ###   ########.fr        #
+#    Updated: 2023/01/20 19:02:54 by rphuyal          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,14 +26,16 @@ LIBFT_DIR = libft
 LIBFT_INCLUDE = -I$(LIBFT_DIR)
 LINK_PATH = -L $(LIBFT_DIR) -lft
 
-SRC = src/main.c \
-		src/validate_inputs.c \
-		src/stack/stack_utils.c \
+SRC = src/main/main.c \
+		src/main/validate_inputs.c \
 		src/stack/swap.c \
 		src/stack/push.c \
 		src/stack/rotate.c \
 		src/stack/reverse_rotate.c \
 		src/algorithm/the_sorting_portal.c \
+		utils/print_stack.c \
+		utils/find_index.c \
+		utils/stack_utils.c \
 
 OBJ = $(SRC:.c=.o)
 
