@@ -6,11 +6,11 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 15:14:43 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/01/20 20:03:39 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/02/09 14:42:51 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 int	main(int argc, char **argv)
 {
@@ -27,6 +27,7 @@ int	main(int argc, char **argv)
 		if (!clean_input(argc, argc, argv, pigeons) || is_stack_sorted(pigeons))
 			return (free_pigeons(pigeons));
 		the_sorting_portal(pigeons);
+		print_stack(pigeons->head_a);
 		free_pigeons(pigeons);
 	}
 	else

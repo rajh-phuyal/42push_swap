@@ -1,32 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   the_sorting_portal.c                               :+:      :+:    :+:   */
+/*   quicksort.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/13 20:10:50 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/02/11 16:24:02 by rphuyal          ###   ########.fr       */
+/*   Created: 2023/01/26 16:38:17 by rphuyal           #+#    #+#             */
+/*   Updated: 2023/01/26 16:43:25 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 #include "algorithm.h"
 
-void	the_sorting_portal(t_carrier *pigeons)
+void	quicksort(t_carrier *pegions)
 {
-	pigeons->size_a = stack_size(pigeons->head_a);
-	if (pigeons->head_a > pigeons->head_a->next)
-		sa(pigeons, 0);
-	return ;
-} 
-
-/*
-give an index to all nodes of the stack a,
-hard copy the stack a for stack b,
-index remains the same only swap the values,
-create a list that keeps track of the chunks on the stack that need to be sorted 
-using quicksort so i know which chunks to sort using quicksort recursively
-
-*/
-//
+	t_stack	*piviot;
+}

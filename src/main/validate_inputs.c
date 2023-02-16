@@ -6,11 +6,11 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 18:32:21 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/01/20 18:49:21 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/02/09 14:42:39 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 /* standard atoi return the int edges if the value exiceeds the int range,
 if the atoi returns int min or int max, we can use the string used for atoi 

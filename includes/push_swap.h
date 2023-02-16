@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 18:05:50 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/01/20 19:03:12 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/01/26 16:42:40 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define PUSH_SWAP_H
 
 # include "../libft/libft.h"
+# include "../src/algorithm/algorithm.h"
 
 /* 
 structure for nodes to contain a int
@@ -84,6 +85,7 @@ void	rrr(t_carrier *pigeons);
 
 /* algorithm */
 void	the_sorting_portal(t_carrier *pigeons);
+void	quicksort(t_carrier *pegions);
 /* end */
 
 #endif
