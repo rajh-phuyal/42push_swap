@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 18:05:50 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/19 16:26:13 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/06/19 17:24:10 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,13 +96,13 @@ void	rrr(t_carrier *pigeons);
 
 /* algorithm */
 void	the_sorting_portal(t_carrier *pigeons);
-void	rollback(t_carrier *pigeons, t_stack *stack, int index);
+void	rollback(t_carrier *pigeons, t_stack *stack);
 void	find_species(t_carrier *pigeons);
 int		find_position(t_stack *stack, int to_find);
 int		find_moves_in_dir(t_carrier *pigeons, int val, int *dir);
 
-void	send_evens(t_carrier *pigeons, int *count);
-void	send_odds(t_carrier *pigeons, int *count);
+void	send_evens(t_carrier *pigeons, int count);
+void	send_odds(t_carrier *pigeons, int count);
 /* end */
 
 #endif

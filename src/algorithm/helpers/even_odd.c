@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 14:29:37 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/19 14:40:40 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/06/19 17:32:33 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void	find_species(t_carrier *pigeons)
 	head = pigeons->head_a;
 	while (head)
 	{
+		ft_printf("what?: %i\n", (head->value % 2 == 0));
 		if (head->value % 2 == 0)
 			pigeons->even_count++;
 		else

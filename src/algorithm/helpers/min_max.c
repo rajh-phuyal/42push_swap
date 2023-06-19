@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 02:04:42 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/19 15:44:09 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/06/19 17:18:05 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void	find_min_max(t_carrier *pigeons, t_stack *stack, int index)
 	find_min_max(pigeons, stack->next, index + 1);
 }
 
-void	rollback(t_carrier *pigeons, t_stack *stack, int index)
+void	rollback(t_carrier *pigeons, t_stack *stack)
 {
 	reset_all_limits(pigeons);
-	find_min_max(pigeons, pigeons->head_a, index);
+	find_min_max(pigeons, pigeons->head_a, 0);
 }
