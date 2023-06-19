@@ -6,11 +6,11 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 20:10:50 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/01/20 18:55:54 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/06/19 02:14:02 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h" 
+#include "../../includes/push_swap.h"
 
 void	the_sorting_portal(t_carrier *pigeons)
 {

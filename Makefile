@@ -6,7 +6,7 @@
 #    By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/02 15:13:33 by rphuyal           #+#    #+#              #
-#    Updated: 2023/06/18 17:18:11 by rphuyal          ###   ########.fr        #
+#    Updated: 2023/06/19 02:07:08 by rphuyal          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ SRC = src/core/main.c \
 		src/stack/rotate.c \
 		src/stack/reverse_rotate.c \
 		src/algorithm/the_sorting_portal.c \
+		src/algorithm/helpers/min_max.c \
 		utils/print_stack.c \
 		utils/find_index.c \
 		utils/stack_utils.c \

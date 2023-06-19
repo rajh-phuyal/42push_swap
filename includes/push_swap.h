@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 18:05:50 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/19 01:37:39 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/06/19 02:15:16 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,15 @@
 # define PUSH_SWAP_H
 
 # include "../libft/libft.h"
+
+# define GREEN 			"\033[0;32m"
+# define RED 			"\033[0;31m"
+# define YELLOW 		"\x1b[33m"
+# define CYAN 			"\x1b[36m"
+# define PURPLE 		"\x1b[35m"
+# define SALMON			"\033[38;5;209m"
+# define SBLUE			"\033[38;5;117m"
+# define RESET 			"\033[0m"
 
 /*
 structure for nodes to contain a int
@@ -30,6 +39,10 @@ typedef struct stack
 typedef struct carrier
 {
 	int				size_a;
+	int				min_even;
+	int				max_even;
+	int				min_odd;
+	int				max_odd;
 	struct stack	*head_a;
 	struct stack	*tail_a;
 	struct stack	*head_b;
@@ -68,6 +81,7 @@ int		clean_input(int i, int count, char **numbers, t_carrier *pigeons);
 int		free_pigeons(t_carrier *pigeons);
 
 /* utils */
+void	ft_print_list(t_carrier *pigeons);
 void	print_stack(t_stack *head);
 int		find_index(char **argv);
 /* end */
@@ -102,6 +116,8 @@ void	rrr(t_carrier *pigeons);
 
 /* algorithm */
 void	the_sorting_portal(t_carrier *pigeons);
+void	reset_all_limits(t_carrier *pigeons);
+void	find_min_max(t_carrier *pigeons, t_stack *stack, int index);
 /* end */
 
 #endif
