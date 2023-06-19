@@ -147,11 +147,11 @@ def send_odds(min_odds, max_odds):
         stack_a) - max_index else len(stack_a) - max_index
 
     if min_cost <= max_cost:
-        val = min_odds
-        use_index = min_index
+        val = max_odds
+        use_index = max_index
     else:
-        val = min_odds
-        use_index = min_index
+        val = max_odds
+        use_index = max_index
     if stack_a.index(val) < len(stack_a) - use_index:
         send_up(val)
     else:
@@ -170,13 +170,7 @@ def main():
     even_count = len(list(filter(lambda x: x % 2 == 0, stack_a)))
     odd_count = len(list(filter(lambda x: x % 2 != 0, stack_a)))
 
-    while even_count != 0:
-        try:
-            min_even, max_even = get_min_max_even()
-        except TypeError:
-            break
-        send_evens(min_even, max_even)
-        even_count -= 1
+    
 
     while odd_count != 0:
         try:
@@ -185,6 +179,14 @@ def main():
             break
         send_odds(min_odd, max_odd)
         odd_count -= 1
+
+    while even_count != 0:
+        try:
+            min_even, max_even = get_min_max_even()
+        except TypeError:
+            break
+        send_evens(min_even, max_even)
+        even_count -= 1
 
     print("First")
     print_stacks()
