@@ -156,7 +156,7 @@ def send_odds(min_odds, max_odds):
         send_up(val)
     else:
         send_down(val)
-    rb()
+    # rb()
 
 
 def main():
@@ -170,8 +170,6 @@ def main():
     even_count = len(list(filter(lambda x: x % 2 == 0, stack_a)))
     odd_count = len(list(filter(lambda x: x % 2 != 0, stack_a)))
 
-    
-
     while odd_count != 0:
         try:
             min_odd, max_odd = get_min_max_odd()
@@ -179,6 +177,15 @@ def main():
             break
         send_odds(min_odd, max_odd)
         odd_count -= 1
+
+    while even_count != 0:
+        try:
+            min_even, max_even = get_min_max_even()
+        except TypeError:
+            break
+        send_evens(min_even, max_even)
+        even_count -= 1
+
 
     while even_count != 0:
         try:
