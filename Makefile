@@ -6,7 +6,7 @@
 #    By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/02 15:13:33 by rphuyal           #+#    #+#              #
-#    Updated: 2023/01/20 19:02:54 by rphuyal          ###   ########.fr        #
+#    Updated: 2023/06/18 17:18:11 by rphuyal          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,8 +26,8 @@ LIBFT_DIR = libft
 LIBFT_INCLUDE = -I$(LIBFT_DIR)
 LINK_PATH = -L $(LIBFT_DIR) -lft
 
-SRC = src/main/main.c \
-		src/main/validate_inputs.c \
+SRC = src/core/main.c \
+		src/core/validate_inputs.c \
 		src/stack/swap.c \
 		src/stack/push.c \
 		src/stack/rotate.c \
@@ -44,11 +44,11 @@ all:	$(NAME)
 libft:
 		@make -sC $(LIBFT_DIR)
 		@echo "$(GREEN)Built libft!$(RESET)"
-	
+
 $(NAME):    $(libft)
 		@@$(CC) $(CFLAGS) -o $(NAME) $(SRC) $(LIBFT_INCLUDE) $(LINK_PATH)
 		@echo "$(GREEN)Compilation successful!$(RESET)"
-		
+
 clean:
 		@make -sC $(LIBFT_DIR) clean
 		@$(RM) $(OBJ)

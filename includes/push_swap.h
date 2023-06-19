@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 18:05:50 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/01/20 19:03:12 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/06/19 01:37:39 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,14 @@
 
 # include "../libft/libft.h"
 
-/* 
+/*
 structure for nodes to contain a int
 an a link to the next node
 */
 typedef struct stack
 {
 	int				value;
+	int				index;
 	struct stack	*next;
 }	t_stack;
 
@@ -29,12 +30,29 @@ typedef struct stack
 typedef struct carrier
 {
 	int				size_a;
-	int				size_b;
 	struct stack	*head_a;
 	struct stack	*tail_a;
 	struct stack	*head_b;
 	struct stack	*tail_b;
 }	t_carrier;
+
+typedef struct array_stack
+{
+	int a_end;
+	int a_start;
+	int	*stack_head;
+}	t_array_stack;
+
+/* keeps track of a lot of stuffs */
+typedef struct stack_carrier
+{
+	int					min_odd;
+	int					max_odd;
+	int					min_even;
+	int					max_even;
+	struct array_stack	*stack_a;
+	struct array_stack	*stack_b;
+}	t_stack_carrier;
 
 /* main */
 int		main(int argc, char **argv);
