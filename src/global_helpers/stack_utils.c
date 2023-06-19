@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/10 16:31:18 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/01/20 18:49:52 by rphuyal          ###   ########.fr       */
+/*   Created: 2023/06/19 13:56:13 by rphuyal           #+#    #+#             */
+/*   Updated: 2023/06/19 14:11:27 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 /* get the stacksize for either stack*/
 int	stack_size(t_stack *head)

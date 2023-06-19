@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 18:05:50 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/19 02:15:16 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/06/19 16:26:13 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,8 @@
 
 # include "../libft/libft.h"
 
-# define GREEN 			"\033[0;32m"
-# define RED 			"\033[0;31m"
-# define YELLOW 		"\x1b[33m"
-# define CYAN 			"\x1b[36m"
-# define PURPLE 		"\x1b[35m"
-# define SALMON			"\033[38;5;209m"
-# define SBLUE			"\033[38;5;117m"
-# define RESET 			"\033[0m"
+# define NORTH 1
+# define SOUTH 2
 
 /*
 structure for nodes to contain a int
@@ -38,34 +32,20 @@ typedef struct stack
 /* keeps track of both stacks */
 typedef struct carrier
 {
-	int				size_a;
-	int				min_even;
-	int				max_even;
-	int				min_odd;
-	int				max_odd;
 	struct stack	*head_a;
 	struct stack	*tail_a;
 	struct stack	*head_b;
 	struct stack	*tail_b;
+	int				size;
+	int				min_even;
+	int				max_even;
+	int				min_odd;
+	int				max_odd;
+	int				odd_count;
+	int				even_count;
+	int				direction;
 }	t_carrier;
 
-typedef struct array_stack
-{
-	int a_end;
-	int a_start;
-	int	*stack_head;
-}	t_array_stack;
-
-/* keeps track of a lot of stuffs */
-typedef struct stack_carrier
-{
-	int					min_odd;
-	int					max_odd;
-	int					min_even;
-	int					max_even;
-	struct array_stack	*stack_a;
-	struct array_stack	*stack_b;
-}	t_stack_carrier;
 
 /* main */
 int		main(int argc, char **argv);
@@ -80,8 +60,7 @@ int		clean_input(int i, int count, char **numbers, t_carrier *pigeons);
 /* exit */
 int		free_pigeons(t_carrier *pigeons);
 
-/* utils */
-void	ft_print_list(t_carrier *pigeons);
+/* helpers */
 void	print_stack(t_stack *head);
 int		find_index(char **argv);
 /* end */
@@ -92,6 +71,7 @@ int		stack_size(t_stack *lst);
 int		is_stack_sorted(t_carrier *pigeons);
 t_stack	*push(int num, t_stack *head);
 t_stack	*pop(t_stack *head);
+/* end */
 
 /* provided operations to use on the two stack*/
 /* swap */
@@ -116,8 +96,13 @@ void	rrr(t_carrier *pigeons);
 
 /* algorithm */
 void	the_sorting_portal(t_carrier *pigeons);
-void	reset_all_limits(t_carrier *pigeons);
-void	find_min_max(t_carrier *pigeons, t_stack *stack, int index);
+void	rollback(t_carrier *pigeons, t_stack *stack, int index);
+void	find_species(t_carrier *pigeons);
+int		find_position(t_stack *stack, int to_find);
+int		find_moves_in_dir(t_carrier *pigeons, int val, int *dir);
+
+void	send_evens(t_carrier *pigeons, int *count);
+void	send_odds(t_carrier *pigeons, int *count);
 /* end */
 
 #endif

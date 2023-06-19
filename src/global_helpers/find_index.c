@@ -5,12 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/20 18:38:06 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/01/20 18:50:05 by rphuyal          ###   ########.fr       */
+/*   Created: 2023/06/19 13:56:16 by rphuyal           #+#    #+#             */
+/*   Updated: 2023/06/19 13:58:05 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "../../includes/push_swap.h"
 
 int	find_index(char **argv)
 {

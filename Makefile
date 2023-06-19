@@ -6,25 +6,19 @@
 #    By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/02 15:13:33 by rphuyal           #+#    #+#              #
-#    Updated: 2023/06/19 02:07:08 by rphuyal          ###   ########.fr        #
+#    Updated: 2023/06/19 16:25:45 by rphuyal          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = push_swap
+NAME  = push_swap
 
-CC = gcc
+CC    = @gcc
 
-CFLAGS = -Wall -Wextra -Werror
+FLAGS = -g -fsanitize=address
 
-RM = rm -f
+LFT   = libft/libft.a
 
-RED = $(shell tput setaf 1)
-GREEN = $(shell tput setaf 2)
-RESET = $(shell tput sgr0)
-
-LIBFT_DIR = libft
-LIBFT_INCLUDE = -I$(LIBFT_DIR)
-LINK_PATH = -L $(LIBFT_DIR) -lft
+INC   = -I./libft
 
 SRC = src/core/main.c \
 		src/core/validate_inputs.c \
@@ -33,30 +27,53 @@ SRC = src/core/main.c \
 		src/stack/rotate.c \
 		src/stack/reverse_rotate.c \
 		src/algorithm/the_sorting_portal.c \
+		src/algorithm/stage_one.c \
 		src/algorithm/helpers/min_max.c \
-		utils/print_stack.c \
-		utils/find_index.c \
-		utils/stack_utils.c \
+		src/algorithm/helpers/even_odd.c \
+		src/algorithm/helpers/sending_cost.c \
+		src/global_helpers/print_stack.c \
+		src/global_helpers/find_index.c \
+		src/global_helpers/stack_utils.c \
 
-OBJ = $(SRC:.c=.o)
+OBJ   = $(patsubst src/%.c, obj/%.o, $(SRC))
 
-all:	$(NAME)
+# COLORS
+CBOLD   = \033[0;1m
+RED     = \033[0;41m
+GREEN   = \033[0;42m
+BLUE   = \033[0;44m
+YELLOW  = \033[0;43m
+RESET   = \033[0m
 
-libft:
-		@make -sC $(LIBFT_DIR)
-		@echo "$(GREEN)Built libft!$(RESET)"
+all: $(LFT) obj $(NAME)
 
-$(NAME):    $(libft)
-		@@$(CC) $(CFLAGS) -o $(NAME) $(SRC) $(LIBFT_INCLUDE) $(LINK_PATH)
-		@echo "$(GREEN)Compilation successful!$(RESET)"
+$(NAME): $(OBJ)
+	@echo "$(CBOLD)$(YELLOW)  Compiling $(NAME) $(RESET)"
+	$(CC) $(FLAGS) -o $@ $^ $(LFT)
+	@echo "$(CBOLD)$(GREEN)    $(NAME) ready!  $(RESET)"
+
+$(LFT):
+	@echo "$(CBOLD)$(YELLOW)    Compiling Libft   $(RESET)"
+	@make -sC ./libft
+	@echo "$(CBOLD)$(GREEN)      Libft ready!    $(RESET)\n ↪"
+
+obj:
+	@mkdir -p obj
+
+obj/%.o: src/%.c
+	@mkdir -p $(dir $@)
+	$(CC) $(FLAGS) $(INC) -c $< -o $@
 
 clean:
-		@make -sC $(LIBFT_DIR) clean
-		@$(RM) $(OBJ)
-		@echo "$(GREEN)Cleaned objects!$(RESET)"
+	@make -sC libft clean > /dev/null
+	@rm -rf $(OBJ) obj
+	@echo "$(CBOLD)$(BLUE)    Objects removed!  $(RESET)"
 
-fclean:    clean
-		@$(RM) $(NAME)
-		@echo "$(GREEN)Cleaned executable!$(RESET)"
+fclean: clean
+	@make -sC libft fclean
+	@rm -rf $(NAME)
+	@echo "$(CBOLD)$(BLUE)    Binaries removed! $(RESET)"
 
-re:	fclean $(NAME)
+re: fclean all
+
+.PHONY: all

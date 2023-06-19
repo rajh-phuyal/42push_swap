@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 15:14:43 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/19 02:15:59 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/06/19 14:19:10 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ int	main(int argc, char **argv)
 	t_carrier	*pigeons;
 
 	pigeons = (t_carrier *)malloc(sizeof(t_carrier));
+	pigeons->head_a = NULL;
+	pigeons->head_b = NULL;
 	if (argc == 2)
 	{
 		argv = ft_split(argv[1], ' ');
@@ -27,12 +29,9 @@ int	main(int argc, char **argv)
 	{
 		if (!clean_input(argc, argc, argv, pigeons) || is_stack_sorted(pigeons))
 			return (free_pigeons(pigeons));
-		reset_all_limits(pigeons);
-		find_min_max(pigeons, pigeons->head_a, 0);
-		ft_print_list(pigeons);
+		print_stack(pigeons->head_a);
 		the_sorting_portal(pigeons);
 		free_pigeons(pigeons);
 	}
-	else
-		return (0);
+	return (0);
 }

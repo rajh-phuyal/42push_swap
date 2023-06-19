@@ -1,23 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   the_sorting_portal.c                               :+:      :+:    :+:   */
+/*   even_odd.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/13 20:10:50 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/19 15:43:11 by rphuyal          ###   ########.fr       */
+/*   Created: 2023/06/19 14:29:37 by rphuyal           #+#    #+#             */
+/*   Updated: 2023/06/19 14:40:40 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "../../../includes/push_swap.h"
 
-void	the_sorting_portal(t_carrier *pigeons)
+void	find_species(t_carrier *pigeons)
 {
-	pigeons->size = stack_size(pigeons->head_a);
-	rollback(pigeons, pigeons->head_a, 0);
-	find_species(pigeons);
-	ft_printf("EVEN: %i\nODD: %i\n", pigeons->even_count, pigeons->odd_count);
-	send_evens(pigeons, &pigeons->even_count);
-	return ;
+	t_stack	*head;
+
+	pigeons->even_count = 0;
+	pigeons->odd_count = 0;
+	head = pigeons->head_a;
+	while (head)
+	{
+		if (head->value % 2 == 0)
+			pigeons->even_count++;
+		else
+			pigeons->odd_count++;
+		head = head->next;
+	}
 }
