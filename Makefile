@@ -6,7 +6,7 @@
 #    By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/02 15:13:33 by rphuyal           #+#    #+#              #
-#    Updated: 2023/06/19 16:25:45 by rphuyal          ###   ########.fr        #
+#    Updated: 2023/06/20 00:52:26 by rphuyal          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ SRC = src/core/main.c \
 		src/stack/reverse_rotate.c \
 		src/algorithm/the_sorting_portal.c \
 		src/algorithm/stage_one.c \
+		src/algorithm/stage_two.c \
 		src/algorithm/helpers/min_max.c \
 		src/algorithm/helpers/even_odd.c \
 		src/algorithm/helpers/sending_cost.c \

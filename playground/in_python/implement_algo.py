@@ -1,36 +1,14 @@
-import sys
-import random
-
-int_min = -1000
-int_max = 1000
-sample_size = 100
-
-stack_a = random.choices(range(int_min, int_max + 1), k=sample_size)
-stack_b = []
-
-# for use cases
-total_moves = 0
-sorted_stack = sorted(stack_a)
+from moves import *
 
 
 def get_min_max_odd():
     odd = sorted([x for x in stack_a if x % 2 == 1])
-    try:
-        min_odd, max_odd = odd[0], odd[len(odd) - 1]
-    except IndexError:
-        return None
-
-    return (min_odd, max_odd)
+    return (odd[0], odd[len(odd) - 1])
 
 
 def get_min_max_even():
     even = sorted([x for x in stack_a if x % 2 == 0])
-    try:
-        min_even, max_even = even[0], even[len(even) - 1]
-    except IndexError:
-        return None
-
-    return (min_even, max_even)
+    return (even[0], even[len(even) - 1])
 
 
 def print_stacks():
@@ -40,64 +18,6 @@ def print_stacks():
 
 def check_stack_sorted(stack):
     return all(stack[i] <= stack[i+1] for i in range(len(stack)-1))
-
-
-def sa():
-    global stack_a, total_moves
-    stack_a[0], stack_a[1] = stack_a[1], stack_a[0]
-    print("sa")
-    total_moves += 1
-
-
-def sb():
-    global stack_b, total_moves
-    stack_b[0], stack_b[1] = stack_b[1], stack_b[0]
-    print("sb")
-    total_moves += 1
-
-
-def pa():
-    global stack_a, stack_b, total_moves
-    stack_a.insert(0, stack_b[0])
-    stack_b.pop(0)
-    print("pa")
-    total_moves += 1
-
-
-def pb():
-    global stack_a, stack_b, total_moves
-    stack_b.insert(0, stack_a[0])
-    stack_a.pop(0)
-    print("pb")
-    total_moves += 1
-
-
-def ra():
-    global stack_a, total_moves
-    stack_a = stack_a[1:] + [stack_a[0]]
-    print("ra")
-    total_moves += 1
-
-
-def rb():
-    global stack_b, total_moves
-    stack_b = stack_b[1:] + [stack_b[0]]
-    print("rb")
-    total_moves += 1
-
-
-def rra():
-    global stack_a, total_moves
-    stack_a = [stack_a[-1]] + stack_a[:-1]
-    print("rra")
-    total_moves += 1
-
-
-def rrb():
-    global stack_b, total_moves
-    stack_b = [stack_b[-1]] + stack_b[:-1]
-    print("rrb")
-    total_moves += 1
 
 
 def send_up(val):
@@ -112,6 +32,12 @@ def send_down(val):
     while stack_a[0] != val:
         rra()
     pb()
+
+# if we are sending the min when the value in odd it can stay on top of the stack
+# if we find the stack B is 1, 3, 9 and we have to send max_value, we send it to B and rotate it
+#
+def pause():
+    global stack_a, stack_b
 
 
 def send_evens(min_even, max_even):
@@ -128,8 +54,8 @@ def send_evens(min_even, max_even):
         val = min_even
         use_index = min_index
     else:
-        val = min_even
-        use_index = min_index
+        val = max_even
+        use_index = max_index
     if stack_a.index(val) < len(stack_a) - use_index:
         send_up(val)
     else:
@@ -147,8 +73,8 @@ def send_odds(min_odds, max_odds):
         stack_a) - max_index else len(stack_a) - max_index
 
     if min_cost <= max_cost:
-        val = max_odds
-        use_index = max_index
+        val = min_odds
+        use_index = min_index
     else:
         val = max_odds
         use_index = max_index

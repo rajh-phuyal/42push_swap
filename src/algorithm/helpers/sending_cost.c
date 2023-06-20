@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 14:23:18 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/19 16:27:24 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/06/20 03:24:22 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,14 @@ int	find_position(t_stack *stack, int to_find)
 		return (find_position(stack->next, to_find));
 }
 
-int	find_moves_in_dir(t_carrier *pigeons, int val, int *dir)
+int	find_moves(t_carrier *pigeons, int val, int *direction)
 {
 	int	index;
 
 	index = find_position(pigeons->head_a, val);
-	ft_printf("what is the pos: %i\n", index);
-	*dir = SOUTH;
-	return (pigeons->size - index);
+	*direction = (index > (pigeons->size - index)) + (NORTH);
+	if (*direction == NORTH)
+		return (index);
+	else
+		return (pigeons->size - index);
 }

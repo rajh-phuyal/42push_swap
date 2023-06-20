@@ -6,13 +6,13 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 14:54:56 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/01/13 15:59:01 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/06/20 02:52:43 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-/* pushes the bottom of the stack a to top of the stack a 
+/* pushes the bottom of the stack a to top of the stack a
 shifting all the elements down one index. */
 void	rra(t_carrier *pigeons, int redirected)
 {
@@ -23,7 +23,9 @@ void	rra(t_carrier *pigeons, int redirected)
 	temp = pigeons->head_a;
 	while (temp)
 	{
-		if (!(temp->next)->next)
+		if (!temp->next)
+			pigeons->tail_a = temp;
+		else if (!(temp->next)->next)
 		{
 			temp->next = NULL;
 			pigeons->tail_a->next = pigeons->head_a;
@@ -36,7 +38,7 @@ void	rra(t_carrier *pigeons, int redirected)
 		ft_printf("rra\n");
 }
 
-/* pushes the bottom of the stack b to top of the stack b 
+/* pushes the bottom of the stack b to top of the stack b
 shifting all other elements down one index. */
 void	rrb(t_carrier *pigeons, int redirected)
 {
@@ -47,7 +49,9 @@ void	rrb(t_carrier *pigeons, int redirected)
 	temp = pigeons->head_b;
 	while (temp)
 	{
-		if (!(temp->next)->next)
+		if (!temp->next)
+			pigeons->tail_b = temp;
+		else if (!(temp->next)->next)
 		{
 			temp->next = NULL;
 			pigeons->tail_b->next = pigeons->head_b;
