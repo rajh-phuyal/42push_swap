@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 13:56:13 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/19 14:11:27 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/06/21 20:41:43 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ int	free_pigeons(t_carrier *pigeons)
 		free(pigeons->head_b);
 		pigeons->head_b = temp;
 	}
+	free(pigeons->range);
 	free(pigeons);
 	return (0);
 }

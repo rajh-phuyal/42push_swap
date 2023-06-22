@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 14:24:42 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/20 15:58:44 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/06/21 20:48:08 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,26 @@ void	go_south(t_carrier *pigeons, int moves)
 		rra(pigeons, 0);
 	pb(pigeons);
 	return ;
+}
+
+int	which(t_carrier *pigeons)
+{
+	t_stack *head;
+	int		least;
+	int		moves;
+	int		index;
+
+	which(head)
+	{
+		if (head->value <= pigeons->range[0])
+		{
+			moves = find_moves(pigeons, head->value, 0);
+			if (moves < least)
+				index = head->index;
+		}
+		head = head->next;
+	}
+	return (index);
 }
 
 void	send_evens(t_carrier *pigeons, int count)

@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 18:05:50 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/20 15:21:48 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/06/21 20:41:27 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct carrier
 	int				max_even;
 	int				min_odd;
 	int				max_odd;
+	int				*range;
 	int				odd_count;
 	int				even_count;
 	int				direction;
@@ -99,6 +100,7 @@ void	the_sorting_portal(t_carrier *pigeons);
 void	only_three(t_carrier *pigeons, t_stack *head, t_stack *tail, int size);
 void	rollback(t_carrier *pigeons, t_stack *stack);
 void	find_species(t_carrier *pigeons);
+int		*find_ranges(t_carrier *pigeons);
 int		find_position(t_stack *stack, int to_find);
 int		find_moves(t_carrier *pigeons, int val, int *direction);
 
