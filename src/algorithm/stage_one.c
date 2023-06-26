@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 14:24:42 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/21 20:48:08 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/06/26 16:04:30 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	which(t_carrier *pigeons)
 	int		moves;
 	int		index;
 
-	which(head)
+	while (head)
 	{
 		if (head->value <= pigeons->range[0])
 		{

@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 18:05:50 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/21 20:41:27 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/06/26 16:05:37 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ void	find_species(t_carrier *pigeons);
 int		*find_ranges(t_carrier *pigeons);
 int		find_position(t_stack *stack, int to_find);
 int		find_moves(t_carrier *pigeons, int val, int *direction);
-
+int		*map_and_sort(t_stack *head, int size);
 void	send_evens(t_carrier *pigeons, int count);
 void	send_odds(t_carrier *pigeons, int count);
 void	send_back(t_carrier *pigeons);
