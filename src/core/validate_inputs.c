@@ -6,14 +6,14 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 18:32:21 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/19 17:11:36 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/06/26 22:07:44 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
 /* standard atoi return the int edges if the value exiceeds the int range,
-if the atoi returns int min or int max, we can use the string used for atoi 
+if the atoi returns int min or int max, we can use the string used for atoi
 to validate if endeed the string contained int min or int max.*/
 bool	int_within_range(int num, char *str)
 {
@@ -67,7 +67,7 @@ int	duplicate_inputs(t_carrier *pigeons)
 	return (1);
 }
 
-/*All the input validation 
+/*All the input validation
 functions above are called from here for each argument*/
 bool	validate_input(int save, char *str)
 {
@@ -78,8 +78,8 @@ bool	validate_input(int save, char *str)
 		return (false);
 }
 
-/* Two in one function, validates the inputs while 
-simultaneously creating stack a. All the input validation 
+/* Two in one function, validates the inputs while
+simultaneously creating stack a. All the input validation
 functions above are called from here for each argument*/
 int	clean_input(int i, int count, char **numbers, t_carrier *pigeons)
 {
@@ -94,7 +94,7 @@ int	clean_input(int i, int count, char **numbers, t_carrier *pigeons)
 		save = ft_atoi(numbers[i]);
 		if (validate_input(save, numbers[i]))
 		{
-			node = push(save, node);
+			node = push(save, 0, node);
 			if (i + 1 == count)
 				pigeons->tail_a = node;
 			if (i == start)

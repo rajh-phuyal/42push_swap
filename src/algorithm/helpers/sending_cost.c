@@ -6,11 +6,20 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 14:23:18 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/20 03:24:22 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/06/26 21:41:29 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/push_swap.h"
+
+unsigned long	create_hash_id(int family)
+{
+    unsigned long id;
+
+    id = 5381;
+    id = ((id << 3) + id) + family;
+    return (id);
+}
 
 int	find_position(t_stack *stack, int to_find)
 {

@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 18:05:50 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/26 16:05:37 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/06/26 22:07:12 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct stack
 {
 	int				value;
 	int				index;
+	int				family;
 	struct stack	*next;
 }	t_stack;
 
@@ -41,7 +42,6 @@ typedef struct carrier
 	int				max_even;
 	int				min_odd;
 	int				max_odd;
-	int				*range;
 	int				odd_count;
 	int				even_count;
 	int				direction;
@@ -70,7 +70,7 @@ int		find_index(char **argv);
 /* basic stack operations */
 int		stack_size(t_stack *lst);
 int		is_stack_sorted(t_carrier *pigeons);
-t_stack	*push(int num, t_stack *head);
+t_stack	*push(int num, int fam, t_stack *head);
 t_stack	*pop(t_stack *head);
 /* end */
 
@@ -100,7 +100,8 @@ void	the_sorting_portal(t_carrier *pigeons);
 void	only_three(t_carrier *pigeons, t_stack *head, t_stack *tail, int size);
 void	rollback(t_carrier *pigeons, t_stack *stack);
 void	find_species(t_carrier *pigeons);
-int		*find_ranges(t_carrier *pigeons);
+void	find_siblings(t_carrier *pigeons);
+unsigned long	create_hash_id(int family);
 int		find_position(t_stack *stack, int to_find);
 int		find_moves(t_carrier *pigeons, int val, int *direction);
 int		*map_and_sort(t_stack *head, int size);

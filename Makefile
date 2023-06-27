@@ -6,7 +6,7 @@
 #    By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/02 15:13:33 by rphuyal           #+#    #+#              #
-#    Updated: 2023/06/26 16:08:50 by rphuyal          ###   ########.fr        #
+#    Updated: 2023/06/26 16:18:52 by rphuyal          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ SRC = src/core/main.c \
 		src/algorithm/stage_one.c \
 		src/algorithm/stage_two.c \
 		src/algorithm/helpers/min_max.c \
-		src/algorithm/helpers/even_odd.c \
+		src/algorithm/helpers/finders.c \
 		src/algorithm/helpers/only_three.c \
 		src/algorithm/helpers/map_and_sort.c \
 		src/algorithm/helpers/sending_cost.c \

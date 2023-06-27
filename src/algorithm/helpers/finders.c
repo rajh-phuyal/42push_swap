@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 14:29:37 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/26 16:13:17 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/06/27 03:32:01 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,34 +29,108 @@ void	find_species(t_carrier *pigeons)
 	}
 }
 
-size_t	arr_len(int *arr)
+int		find_index_arr(int *arr, int size, int to_find)
 {
-	size_t	len;
-
-	len = 0;
-	while (arr[len])
-		len++;
-	return (len);
+	if (size == 0)
+		return (-1);
+	if (arr[size - 1] == to_find)
+		return (size - 1);
+	return (find_index_arr(arr, size - 1, to_find));
 }
 
-int *find_ranges(t_carrier *pigeons)
+
+void	find_even_siblings(t_carrier *pigeons, t_stack *head, int *arr, int blocks)
 {
-	int	*range;
+	int	max_pos;
+	int	min_pos;
+	int my_index;
+	int	max_sibling;
+
+	max_sibling = ;
+	max_pos = find_index_arr(arr, pigeons->size, pigeons->max_even);
+	min_pos = find_index_arr(arr, pigeons->size, pigeons->min_even);
+	while (head)
+	{
+		if (head->value % 2 == 0)
+		{
+			if (head->value == pigeons->max_even)
+				head->family = blocks;
+			else if (head->value == pigeons->min_even)
+				head->family = 0;
+			else
+			{
+				my_index = find_index_arr(arr, pigeons->size, head->value);
+				if (max_pos - my_index < my_index - min_pos)
+					head->family = blocks;
+				else
+					head->family = curr_fam;
+			}
+		}
+		head = head->next;
+	}
+}
+
+void	find_odd_siblings(t_carrier *pigeons, t_stack *head, int *arr, int blocks)
+{
+	int	curr_fam;
+	int	max_pos;
+	int	min_pos;
+	int my_index;
+
+	curr_fam = 0;
+	max_pos = find_index_arr(arr, pigeons->size, pigeons->max_odd);
+	min_pos = find_index_arr(arr, pigeons->size, pigeons->min_odd);
+	while (head)
+	{
+		if (head->value % 2 == 0)
+		{
+			if (head->value == pigeons->max_odd)
+				head->family = blocks;
+			else if (head->value == pigeons->min_odd)
+				head->family = 0;
+			else
+			{
+				my_index = find_index_arr(arr, pigeons->size, head->value);
+				if (max_pos - my_index < my_index - min_pos)
+					head->family = blocks;
+				else
+					head->family = 0;
+			}
+		}
+		head = head->next;
+	}
+}
+
+int	find_diff_range(t_carrier *pigeons, t_stack *head, int *arr)
+{
+	int even_blocks;
+	int odd_blocks;
+	int	min_siblings;
+
+	min_siblings = 3;
+	even_blocks = pigeons->even_count / min_siblings +
+				(pigeons->even_count % min_siblings != 0);
+	odd_blocks = pigeons->odd_count / min_siblings +
+				(pigeons->odd_count % min_siblings != 0);
+	ft_printf("min_siblings: %i\n", min_siblings);
+	ft_printf("even_count: %i\n", pigeons->even_count);
+	ft_printf("odd_count: %i\n", pigeons->odd_count);
+	ft_printf("first op even: %i\n", pigeons->even_count / min_siblings);
+	ft_printf("first op odd: %i\n", pigeons->odd_count / min_siblings);
+	ft_printf("even_blocks: %i\n", even_blocks);
+	ft_printf("odd_blocks: %i\n", odd_blocks);
+	find_even_siblings(pigeons, head, arr, even_blocks, min_siblings);
+	find_odd_siblings(pigeons, head, arr, odd_blocks, min_siblings);
+	return (1);
+}
+
+void	find_siblings(t_carrier *pigeons)
+{
 	int *sorted;
 
-	range = (int *)malloc(sizeof(int) * 4);
 	sorted = map_and_sort(pigeons->head_a, pigeons->size);
-	if (!range || !sorted)
-		return (NULL);
-	ft_printf("sorted: %d\n", sorted[0]);
-	for (int i = 0; i < arr_len(sorted); i++)
-	{
-		ft_printf("sorted: %d\n", sorted[i]);
-	}
+	if (!sorted)
+		return ;
+	find_diff_range(pigeons, pigeons->head_a, sorted);
 	free(sorted);
-	range[0] = pigeons->max_odd;
-	range[1] = pigeons->max_odd - (pigeons->odd_count / 2);
-	range[2] = pigeons->min_even;
-	range[3] = pigeons->min_even + (pigeons->odd_count / 2);
-	return (range);
 }

@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 14:54:53 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/01/13 15:55:33 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/06/26 17:51:48 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,16 @@
 /* swap the values of the first two nodes of the stack a */
 void	sa(t_carrier *pigeons, int redirected)
 {
-	int	temp;
+	int	temp[2];
 
-	if (!pigeons->head_a->next)
+	if (!pigeons->head_a || !pigeons->head_a->next)
 		return ;
-	temp = pigeons->head_a->value;
+	temp[0] = pigeons->head_a->value;
+	temp[1] = pigeons->head_a->family;
 	pigeons->head_a->value = (pigeons->head_a->next)->value;
-	(pigeons->head_a->next)->value = temp;
+	pigeons->head_a->family = (pigeons->head_a->next)->family;
+	(pigeons->head_a->next)->value = temp[0];
+	(pigeons->head_a->next)->family = temp[1];
 	if (!redirected)
 		ft_printf("sa\n");
 }
@@ -29,13 +32,16 @@ void	sa(t_carrier *pigeons, int redirected)
 /* swap the values of the first two nodes of the stack b */
 void	sb(t_carrier *pigeons, int redirected)
 {
-	int	temp;
+	int	temp[2];
 
-	if (!pigeons->head_b->next)
+	if (!pigeons->head_b || !pigeons->head_b->next)
 		return ;
-	temp = pigeons->head_b->value;
+	temp[0] = pigeons->head_b->value;
+	temp[1] = pigeons->head_b->family;
 	pigeons->head_b->value = (pigeons->head_b->next)->value;
-	(pigeons->head_b->next)->value = temp;
+	pigeons->head_b->family = (pigeons->head_b->next)->family;
+	(pigeons->head_b->next)->value = temp[0];
+	(pigeons->head_b->next)->family = temp[1];
 	if (!redirected)
 		ft_printf("sb\n");
 }

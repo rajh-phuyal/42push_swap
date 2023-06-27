@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/12 14:55:04 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/20 02:54:54 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/06/26 22:09:28 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	pa(t_carrier *pigeons)
 
 	if (!pigeons->head_b)
 		return ;
-	pigeons->head_a = push(pigeons->head_b->value, pigeons->head_a);
+	pigeons->head_a = push(pigeons->head_b->value, pigeons->head_b->family, pigeons->head_a);
 	pigeons->head_b = pop(pigeons->head_b);
 	if (!pigeons->tail_a)
 		pigeons->tail_a = pigeons->head_a;
@@ -43,7 +43,7 @@ void	pb(t_carrier *pigeons)
 
 	if (!pigeons->head_a)
 		return ;
-	pigeons->head_b = push(pigeons->head_a->value, pigeons->head_b);
+	pigeons->head_b = push(pigeons->head_a->value, pigeons->head_a->family, pigeons->head_b);
 	pigeons->head_a = pop(pigeons->head_a);
 	if (!pigeons->tail_b)
 		pigeons->tail_b = pigeons->head_b;
