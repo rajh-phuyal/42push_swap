@@ -6,44 +6,39 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 02:04:42 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/19 17:18:05 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/06/29 22:31:12 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/push_swap.h"
 
-void	reset_all_limits(t_carrier *pigeons)
-{
-	pigeons->min_even = INT_MAX;
-	pigeons->max_even = INT_MIN;
-	pigeons->min_odd = INT_MAX;
-	pigeons->max_odd = INT_MIN;
-}
-
-void	find_min_max(t_carrier *pigeons, t_stack *stack, int index)
+void	find_min_max(t_carrier *pigeons, t_stack *stack, int index, int stk)
 {
 	if (!stack)
 		return ;
-	if (stack->value % 2 == 0)
+	if (stk == STACK_A)
 	{
-		if (stack->value < pigeons->min_even)
-			pigeons->min_even = stack->value;
-		if (stack->value > pigeons->max_even)
-			pigeons->max_even = stack->value;
+		if (stack->value < pigeons->min_a)
+			pigeons->min_a = stack->value;
+		if (stack->value > pigeons->max_a)
+			pigeons->max_a = stack->value;
 	}
-	else
+	else if (stk == STACK_B)
 	{
-		if (stack->value < pigeons->min_odd)
-			pigeons->min_odd = stack->value;
-		if (stack->value > pigeons->max_odd)
-			pigeons->max_odd = stack->value;
+		if (stack->value < pigeons->min_b)
+			pigeons->min_b = stack->value;
+		if (stack->value > pigeons->max_b)
+			pigeons->max_b = stack->value;
 	}
 	stack->index = index;
-	find_min_max(pigeons, stack->next, index + 1);
+	find_min_max(pigeons, stack->next, index + 1, stk);
 }
 
-void	rollback(t_carrier *pigeons, t_stack *stack)
+void	rollback(t_carrier *pigeons, t_stack *stack, int stk)
 {
-	reset_all_limits(pigeons);
-	find_min_max(pigeons, pigeons->head_a, 0);
+	pigeons->min_a = INT_MAX;
+	pigeons->max_a = INT_MIN;
+	pigeons->min_b = INT_MAX;
+	pigeons->max_b = INT_MIN;
+	find_min_max(pigeons, pigeons->head_a, 0, stk);
 }

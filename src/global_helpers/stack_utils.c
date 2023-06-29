@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 13:56:13 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/26 22:08:47 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/06/29 23:30:41 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,21 @@ int	stack_size(t_stack *head)
 }
 
 /* check if the stack is sorted */
-int	is_stack_sorted(t_carrier *pigeons)
+int	is_stack_sorted(t_stack *head, int order)
 {
-	t_stack	*head;
+	int	ops;
 
-	head = pigeons->head_a;
+	if (!head)
+		return (0);
 	while (head->next)
 	{
-		if (head->value > head->next->value)
+		if (order == ASC)
+			ops = (head->value > head->next->value);
+		else if (order == DESC)
+			ops = (head->value < head->next->value);
+		else
+			return (0);
+		if (ops)
 			return (0);
 		head = head->next;
 	}
@@ -80,6 +87,7 @@ int	free_pigeons(t_carrier *pigeons)
 		free(pigeons->head_b);
 		pigeons->head_b = temp;
 	}
-	free(pigeons);
+	if (pigeons->sorted)
+		free(pigeons->sorted);
 	return (0);
 }

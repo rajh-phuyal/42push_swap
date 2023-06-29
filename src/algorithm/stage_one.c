@@ -6,30 +6,11 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 14:24:42 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/26 21:49:12 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/06/29 23:32:29 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
-
-void	pause_stack(t_carrier *pigeons, char sending)
-{
-	static int	rotaions = 0;
-
-	if (sending == 'O' || sending == 'E')
-	{
-		rb(pigeons, 0);
-		rotaions++;
-	}
-	else
-	{
-		while (rotaions)
-		{
-			rrb(pigeons, 0);
-			rotaions--;
-		}
-	}
-}
 
 void	go_north(t_carrier *pigeons, int moves)
 {
@@ -57,60 +38,28 @@ void	go_south(t_carrier *pigeons, int moves)
 	return ;
 }
 
-void	send_evens(t_carrier *pigeons, int count)
+void	send_to_b(t_carrier *pigeons)
 {
 	int	dir;
-	int	val;
 	int	moves;
-	int	rotaions;
 
 	dir = NORTH;
-	while (count)
+	while (pigeons->size)
 	{
-		if (find_moves(pigeons, pigeons->min_even, &dir) < \
-			find_moves(pigeons, pigeons->max_even, &dir))
-			val = pigeons->min_even;
-		else
-			val = pigeons->max_even;
-		moves = find_moves(pigeons, val, &dir);
+		// if (find_moves(pigeons, pigeons->min_a, &dir) < \
+		// 	find_moves(pigeons, pigeons->max_a, &dir))
+		// 	val = pigeons->min_a;
+		// else
+		// 	val = pigeons->max_a;
+		// moves = find_moves(pigeons, val, &dir);
+		moves = find_moves(pigeons, pigeons->min_a, &dir);
 		if (dir == NORTH)
 			go_north(pigeons, moves);
 		else
 			go_south(pigeons, moves);
-		count--;
 		pigeons->size--;
-		if (val == pigeons->max_even && count > 0)
-			pause_stack(pigeons, 'E');
-		rollback(pigeons, pigeons->head_a);
+		// if (val == pigeons->max_even && count > 0)
+		// 	pause_stack(pigeons, 'E');
+		rollback(pigeons, pigeons->head_a, STACK_A);
 	}
-	pause_stack(pigeons, 'R');
-}
-
-void	send_odds(t_carrier *pigeons, int count)
-{
-	int	dir;
-	int	val;
-	int	moves;
-
-	dir = NORTH;
-	moves = 0;
-	while (count)
-	{
-		if (find_moves(pigeons, pigeons->min_odd, &dir) < \
-			find_moves(pigeons, pigeons->max_odd, &dir))
-			val = pigeons->min_odd;
-		else
-			val = pigeons->max_odd;
-		moves = find_moves(pigeons, val, &dir);
-		if (dir == NORTH)
-			go_north(pigeons, moves);
-		else
-			go_south(pigeons, moves);
-		count--;
-		pigeons->size--;
-		if (val == pigeons->min_odd && count > 0)
-			pause_stack(pigeons, 'O');
-		rollback(pigeons, pigeons->head_a);
-	}
-	pause_stack(pigeons, 'R');
 }
