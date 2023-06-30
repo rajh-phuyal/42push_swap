@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 14:29:37 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/30 01:22:56 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/06/30 11:33:55 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,14 @@ int		find_index_arr(int *arr, int size, int to_find)
 
 /* find a way to feep tract of numbers of members added in a family
 also the family should be assigned based on the index and the range of
-differencr between min and the max*/
+difference between min and the max*/
+
+/* use the index to see if the number's index in sorted array is in which range of
+the family Eg: if number is 3, its index is 4, number of families is 3 and max siblings
+is 3, use siblings family and index to figure out which family it belongs to.
+number of family is already dividing the sorted array in that many parts, so we do not
+need to worry about the max sibling is passed*/
+
 void	get_family_number(t_carrier *pigeons, int max_siblings, int families)
 {
 	int		index;
