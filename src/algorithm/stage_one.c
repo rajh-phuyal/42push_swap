@@ -6,34 +6,28 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 14:24:42 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/29 23:32:29 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/06/30 00:09:13 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void	go_north(t_carrier *pigeons, int moves)
+void	go(t_carrier *pigeons, int moves, int dir)
 {
-	if (!pigeons->head_a || !pigeons->head_a->next)
+	if (!pigeons->head_a)
+		return ;
+	else if (!pigeons->head_a->next)
 	{
 		pb(pigeons);
 		return ;
 	}
 	while (moves--)
-		ra(pigeons, 0);
-	pb(pigeons);
-	return ;
-}
-
-void	go_south(t_carrier *pigeons, int moves)
-{
-	if (!pigeons->head_a || !pigeons->head_a->next)
 	{
-		pb(pigeons);
-		return ;
+		if (dir == NORTH)
+			ra(pigeons, 0);
+		else
+			rra(pigeons, 0);
 	}
-	while (moves--)
-		rra(pigeons, 0);
 	pb(pigeons);
 	return ;
 }
@@ -53,10 +47,7 @@ void	send_to_b(t_carrier *pigeons)
 		// 	val = pigeons->max_a;
 		// moves = find_moves(pigeons, val, &dir);
 		moves = find_moves(pigeons, pigeons->min_a, &dir);
-		if (dir == NORTH)
-			go_north(pigeons, moves);
-		else
-			go_south(pigeons, moves);
+		go(pigeons, moves, dir);
 		pigeons->size--;
 		// if (val == pigeons->max_even && count > 0)
 		// 	pause_stack(pigeons, 'E');
