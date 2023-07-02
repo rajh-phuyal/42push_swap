@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 20:10:50 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/30 01:08:00 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/01 17:21:33 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 void	the_sorting_portal(t_carrier *pigeons)
 {
-	int	*range;
-
 	pigeons->size = stack_size(pigeons->head_a);
 	if (pigeons->size <= 3)
 		only_three(pigeons, pigeons->head_a, pigeons->tail_a, pigeons->size);

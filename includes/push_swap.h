@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 18:05:50 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/29 23:29:55 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/01 22:44:57 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ typedef struct stack
 	struct stack	*next;
 }	t_stack;
 
-/* keeps track of both stacks */
+/* keeps track of both stacks and other stuffs */
 typedef struct carrier
 {
 	int				size;
@@ -45,6 +45,8 @@ typedef struct carrier
 	int				min_b;
 	int				max_b;
 	int				*sorted;
+	int				siblings;
+	int				families;
 	struct stack	*head_a;
 	struct stack	*tail_a;
 	struct stack	*head_b;

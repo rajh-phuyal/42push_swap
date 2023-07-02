@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 14:24:42 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/30 00:09:13 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/02 15:17:03 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,25 +32,29 @@ void	go(t_carrier *pigeons, int moves, int dir)
 	return ;
 }
 
+t_stack	*which_node_to_send(t_carrier *pigeons)
+{
+
+}
 void	send_to_b(t_carrier *pigeons)
 {
+	int	val;
 	int	dir;
 	int	moves;
+	int	family;
+	t_stack *node;
 
 	dir = NORTH;
+	family = malloc(sizeof(int) * pigeons->families);
 	while (pigeons->size)
 	{
-		// if (find_moves(pigeons, pigeons->min_a, &dir) < \
-		// 	find_moves(pigeons, pigeons->max_a, &dir))
-		// 	val = pigeons->min_a;
-		// else
-		// 	val = pigeons->max_a;
-		// moves = find_moves(pigeons, val, &dir);
-		moves = find_moves(pigeons, pigeons->min_a, &dir);
+		node = which_node_to_send(pigeons);
+		// send two chunks of two families to b
+		// moves = find_moves(pigeons, pigeons->min_a, &dir);
 		go(pigeons, moves, dir);
+		if (family % 2 != 0)
+			rb(pigeons, 0);
 		pigeons->size--;
-		// if (val == pigeons->max_even && count > 0)
-		// 	pause_stack(pigeons, 'E');
 		rollback(pigeons, pigeons->head_a, STACK_A);
 	}
 }

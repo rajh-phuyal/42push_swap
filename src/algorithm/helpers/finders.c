@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 14:29:37 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/30 11:33:55 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/01 22:45:01 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,64 +34,34 @@ int	find_moves(t_carrier *pigeons, int val, int *direction)
 		return (pigeons->size - index);
 }
 
-int		find_index_arr(int *arr, int size, int to_find)
+int		find_index_in_arr(int *arr, int size, int to_find)
 {
 	if (size == 0)
 		return (-1);
 	if (arr[size - 1] == to_find)
 		return (size - 1);
-	return (find_index_arr(arr, size - 1, to_find));
-}
-
-/* find a way to feep tract of numbers of members added in a family
-also the family should be assigned based on the index and the range of
-difference between min and the max*/
-
-/* use the index to see if the number's index in sorted array is in which range of
-the family Eg: if number is 3, its index is 4, number of families is 3 and max siblings
-is 3, use siblings family and index to figure out which family it belongs to.
-number of family is already dividing the sorted array in that many parts, so we do not
-need to worry about the max sibling is passed*/
-
-void	get_family_number(t_carrier *pigeons, int max_siblings, int families)
-{
-	int		index;
-	int		count;
-	int		family;
-	t_stack *head;
-
-	family = 1;
-	count = 0;
-	head = pigeons->head_a;
-	while (head)
-	{
-		if (count == max_siblings)
-		{
-			count = 0;
-			family++;
-		}
-		index = find_index_arr(pigeons->sorted, pigeons->size, head->value);
-		head->family = family;
-		count++;
-		head = head->next;
-	}
+	return (find_index_in_arr(arr, size - 1, to_find));
 }
 
 void	find_siblings(t_carrier *pigeons)
 {
-	int *sorted;
+	int	index;
 	int	families;
 	int	max_siblings;
+	t_stack *head;
 
-	max_siblings = 5;
+	max_siblings = 6;
 	families = pigeons->size / max_siblings + (pigeons->size % max_siblings != 0);
-	ft_printf("size: %i\n", pigeons->size);
-	ft_printf("%d families\n", families);
-	ft_printf("%d max siblings\n", max_siblings);
-	ft_printf("%d min\n", pigeons->min_a);
-	ft_printf("%d max\n", pigeons->max_a);
+	pigeons->siblings = max_siblings;
+	pigeons->families = families;
 	pigeons->sorted = map_and_sort(pigeons->head_a, pigeons->size);
-	if (!sorted)
+	if (!pigeons->sorted)
 		return ;
-	get_family_number(pigeons, max_siblings, families);
+	head = pigeons->head_a;
+	while (head)
+	{
+		index = find_index_in_arr(pigeons->sorted, pigeons->size, head->value);
+		head->family = ((families / max_siblings) - (families >= max_siblings)) + (index / max_siblings);
+		head = head->next;
+	}
 }
