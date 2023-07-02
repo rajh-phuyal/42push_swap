@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 15:14:43 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/29 23:05:33 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/02 16:19:45 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	main(int argc, char **argv)
 
 	pigeons.head_a = NULL;
 	pigeons.head_b = NULL;
+	pigeons.sorted = NULL;
 	if (argc == 2)
 	{
 		argv = ft_split(argv[1], ' ');

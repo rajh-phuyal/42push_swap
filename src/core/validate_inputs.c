@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 18:32:21 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/26 22:07:44 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/02 16:48:42 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ int	duplicate_inputs(t_carrier *pigeons)
 		}
 		head = head->next;
 	}
-	return (1);
+	return (true);
 }
 
 /*All the input validation
