@@ -6,13 +6,12 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 15:01:35 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/06/29 23:27:16 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/10 20:06:02 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/push_swap.h"
 
-// remove sa of size 2 if not enough space in the function
 void	only_three(t_carrier *pigeons, t_stack *head, t_stack *tail, int size)
 {
 	if (size == 2)

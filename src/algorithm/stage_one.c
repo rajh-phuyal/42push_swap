@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 14:24:42 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/10 15:36:44 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/10 20:29:55 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,16 @@ void	go(t_carrier *pigeons, int moves, int dir)
 	return ;
 }
 
-t_stack	*node_to_send(t_carrier *pigeons, t_stack *head, int first, int second, int *dir)
+t_stack	*node_to_send(t_carrier *pigeons, int first, int second, int *dir)
 {
 	int		moves;
 	int		least;
 	t_stack	*node;
+	t_stack	*head;
 
 	least = 1000;
 	node = NULL;
+	head = pigeons->head_a;
 	while (head)
 	{
 		if (head->family == first || head->family == second)
@@ -57,32 +59,41 @@ t_stack	*node_to_send(t_carrier *pigeons, t_stack *head, int first, int second, 
 	return (node);
 }
 
+void	check_for_rr(t_stack *pigeons);
+
+int	send_two_families(t_carrier *pigeons, int first, int second, int *dir)
+{
+	int			which;
+	int			moves;
+	t_stack		*node;
+
+	node = node_to_send(pigeons, first, second, dir);
+	which = node->family;
+	moves = find_moves(pigeons, node->value, dir);
+	go(pigeons, moves, *dir);
+	rollback(pigeons, pigeons->head_a, STACK_A);
+	return (which);
+}
+
 void	send_to_b(t_carrier *pigeons)
 {
-	int	dir;
-	int	count;
-	int	moves;
-	int	family;
+	int		dir;
+	int		count;
+	int		moves;
+	int		family;
 	t_stack	*node;
 
-	dir = NORTH;
-	family = 0;
 	count = 0;
+	family = 0;
+	dir = NORTH;
 	while (pigeons->size)
 	{
-		if (count < pigeons->siblings)
+		if (!pigeons->head_a)
+			break ;
+		if (count < pigeons->siblings * 2)
 		{
-			// send two chunks of two families to b
-			node = node_to_send(pigeons, pigeons->head_a, family, family + 1, &dir);
-			if (!node)
-				return ;
-			moves = find_moves(pigeons, node->value, &dir);
-			go(pigeons, moves, dir);
-			rollback(pigeons, pigeons->head_a, STACK_A);
-			// ft_printf("node->family: %d\n", node->family);
-			if (node->family % 2 != 0)
-		 		rb(pigeons, 0);
-			ft_printf("here\n");
+			if (send_two_families(pigeons, family, family + 1, &dir) % 2 == 0)
+				rb(pigeons, 0);
 			count++;
 		}
 		else

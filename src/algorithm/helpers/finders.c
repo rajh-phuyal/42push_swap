@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 14:29:37 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/02 18:14:29 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/10 18:03:48 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	find_moves(t_carrier *pigeons, int val, int *direction)
 		return (pigeons->size - index);
 }
 
-int		find_index_in_arr(int *arr, int size, int to_find)
+int	find_index_in_arr(int *arr, int size, int to_find)
 {
 	if (size == 0)
 		return (-1);
@@ -45,13 +45,14 @@ int		find_index_in_arr(int *arr, int size, int to_find)
 
 void	find_siblings(t_carrier *pigeons)
 {
-	int	index;
-	int	families;
-	int	max_siblings;
-	t_stack *head;
+	int		index;
+	int		families;
+	int		max_siblings;
+	t_stack	*head;
 
 	max_siblings = 6;
-	families = pigeons->size / max_siblings + (pigeons->size % max_siblings != 0);
+	families = pigeons->size / max_siblings + \
+			(pigeons->size % max_siblings != 0);
 	pigeons->siblings = max_siblings;
 	pigeons->families = families;
 	pigeons->sorted = map_and_sort(pigeons->head_a, pigeons->size);
@@ -61,7 +62,8 @@ void	find_siblings(t_carrier *pigeons)
 	while (head)
 	{
 		index = find_index_in_arr(pigeons->sorted, pigeons->size, head->value);
-		head->family = ((families / max_siblings) - (families >= max_siblings)) + (index / max_siblings);
+		head->family = ((families / max_siblings) - \
+				(families >= max_siblings)) + (index / max_siblings);
 		head = head->next;
 	}
 }
