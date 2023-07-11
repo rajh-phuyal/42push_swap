@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 18:32:21 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/02 16:48:42 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/11 20:29:12 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ int	clean_input(int i, int count, char **numbers, t_carrier *pigeons)
 		{
 			if (node)
 				pigeons->head_a = node;
-			return (ft_printf("Error\n") - 6);
+			return (ft_printf("Error\n") - 5);
 		}
 	}
 	return (duplicate_inputs(pigeons));
