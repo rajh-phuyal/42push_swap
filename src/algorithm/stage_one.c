@@ -6,13 +6,28 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 14:24:42 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/10 20:29:55 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/11 20:07:07 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../includes/push_swap.h"
 
-void	go(t_carrier *pigeons, int moves, int dir)
+int	case_for_rr(t_carrier *pigeons, int moves, int dir, bool is_rr)
+{
+	if (is_rr)
+	{
+		if (moves > 0 && dir == NORTH)
+		{
+			rr(pigeons);
+			return (1);
+		}
+		else
+			rb(pigeons, 0);
+	}
+	return (0);
+}
+
+void	go(t_carrier *pigeons, int moves, int dir, bool is_rr)
 {
 	if (!pigeons->head_a)
 		return ;
@@ -21,6 +36,7 @@ void	go(t_carrier *pigeons, int moves, int dir)
 		pb(pigeons);
 		return ;
 	}
+	moves -= case_for_rr(pigeons, moves, dir, is_rr);
 	while (moves)
 	{
 		if (dir == NORTH)
@@ -59,20 +75,22 @@ t_stack	*node_to_send(t_carrier *pigeons, int first, int second, int *dir)
 	return (node);
 }
 
-void	check_for_rr(t_stack *pigeons);
-
 int	send_two_families(t_carrier *pigeons, int first, int second, int *dir)
 {
 	int			which;
 	int			moves;
 	t_stack		*node;
+	static bool	is_rr = 0;
 
 	node = node_to_send(pigeons, first, second, dir);
+	if (!node)
+		return (0);
 	which = node->family;
 	moves = find_moves(pigeons, node->value, dir);
-	go(pigeons, moves, *dir);
+	go(pigeons, moves, *dir, is_rr);
 	rollback(pigeons, pigeons->head_a, STACK_A);
-	return (which);
+	is_rr = 1 - ((which % ((pigeons->families % 2 != 0) + 1) == 0));
+	return (1);
 }
 
 void	send_to_b(t_carrier *pigeons)
@@ -86,20 +104,17 @@ void	send_to_b(t_carrier *pigeons)
 	count = 0;
 	family = 0;
 	dir = NORTH;
-	while (pigeons->size)
+	while (pigeons->head_a)
 	{
-		if (!pigeons->head_a)
+		if (family == pigeons->families - 2)
 			break ;
-		if (count < pigeons->siblings * 2)
+		if (count < (pigeons->siblings * 2))
 		{
-			if (send_two_families(pigeons, family, family + 1, &dir) % 2 == 0)
-				rb(pigeons, 0);
+			if (!send_two_families(pigeons, family, family + 1, &dir))
+				family++;
 			count++;
 		}
 		else
-		{
 			count = 0;
-			family++;
-		}
 	}
 }
