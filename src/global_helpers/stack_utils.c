@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 13:56:13 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/02 15:39:48 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/17 13:44:35 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ t_stack	*pop(t_stack *head)
 }
 
 /* frees the both pigeons(from the cage called carrier) along with
-the stack they were carrying*/
+the stack they were carrying */
 int	free_pigeons(t_carrier *pigeons)
 {
 	t_stack	*temp;

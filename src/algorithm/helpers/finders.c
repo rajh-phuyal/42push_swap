@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 14:29:37 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/11 20:45:51 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/17 23:33:21 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ void	find_siblings(t_carrier *pigeons)
 	int		max_siblings;
 	t_stack	*head;
 
-	max_siblings = 8;
-	families = pigeons->size / max_siblings + \
-			(pigeons->size % max_siblings != 0);
+	max_siblings = 12;
+	families = pigeons->size - 4 / max_siblings + \
+			(pigeons->size - 4 % max_siblings != 0);
 	pigeons->siblings = max_siblings;
 	pigeons->families = families;
 	pigeons->sorted = map_and_sort(pigeons->head_a, pigeons->size);
@@ -62,7 +62,10 @@ void	find_siblings(t_carrier *pigeons)
 	while (head)
 	{
 		index = find_index_in_arr(pigeons->sorted, pigeons->size, head->value);
-		head->family = ((families / max_siblings) - \
+		if (index >= (pigeons->size - 4))
+			head->family = -1;
+		else
+			head->family = ((families / max_siblings) - \
 				(families >= max_siblings)) + (index / max_siblings);
 		head = head->next;
 	}
