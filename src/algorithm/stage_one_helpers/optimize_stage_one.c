@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 13:48:59 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/17 21:43:01 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/18 15:21:11 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,11 @@ int	send_one_family(t_carrier *pigeons, int fam, int mid, int *dir)
 
 	node = node_to_send(pigeons, fam, 0, dir);
 	if (!node)
+	{
+		if (!(is_rr--))
+			rb(pigeons, 0);
 		return (0);
+	}
     val = node->value;
 	moves = find_moves(pigeons, node->value, dir);
 	go(pigeons, moves, *dir, is_rr);
@@ -67,7 +71,7 @@ void    manual_send_last_two(t_carrier *pigeons, int first, int second, int *dir
     }
     mid = mean_of_family(pigeons->head_a, second);
     pigeons->size = stack_size(pigeons->head_a);
-    while (pigeons->size >= 4)
+    while (pigeons->size > 4)
     {
         if (!send_one_family(pigeons, second, mid, dir))
             break ;

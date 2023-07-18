@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 14:24:42 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/17 23:17:27 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/18 15:24:53 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ t_stack	*node_to_send(t_carrier *pigeons, int first, int second, int *dir)
 	t_stack	*node;
 	t_stack	*head;
 
-	least = 1000;
 	node = NULL;
+	least = INT_MAX;
 	head = pigeons->head_a;
 	while (head)
 	{
@@ -84,38 +84,45 @@ int	send_two_families(t_carrier *pigeons, int first, int second, int *dir)
 
 	node = node_to_send(pigeons, first, second, dir);
 	if (!node)
+	{
+		if (second == pigeons->families - 3 && is_rr)
+		{
+			rb(pigeons, 0);
+			is_rr = false;
+		}
 		return (0);
+	}
 	which = node->family;
 	moves = find_moves(pigeons, node->value, dir);
 	go(pigeons, moves, *dir, is_rr);
 	rollback(pigeons, pigeons->head_a, STACK_A);
-	is_rr = true - ((which % ((pigeons->families % 2 != 0) + 1) == 0));
+	is_rr = true - ((which % ((pigeons->families % 2 != 0) + 1) != 0));
 	return (1);
 }
 
-void	send_to_b(t_carrier *pigeons)
+void	send_to_b(t_carrier *pigeons, int first, int second)
 {
 	int		dir;
 	int		count;
-	int		moves;
-	int		family;
 	t_stack	*node;
 
 	count = 0;
-	family = 0;
 	dir = NORTH;
-	while (pigeons->head_a)
+	while (true)
 	{
-		if (family == pigeons->families - 2)
+		if (second >= pigeons->families - 2)
 			break ;
-		if (count < (pigeons->siblings * 2))
+		if (count <= (pigeons->siblings * 2))
 		{
-			if (!send_two_families(pigeons, family, family + 1, &dir))
-				family++;
+			if (!send_two_families(pigeons, first, second, &dir))
+			{
+				first += 2;
+				second += 2;
+				count = 0;
+				continue ;
+			}
 			count++;
 		}
-		else
-			count = 0;
 	}
-	manual_send_last_two(pigeons, family, family + 1, &dir);
+	manual_send_last_two(pigeons, first, second, &dir);
 }
