@@ -6,11 +6,11 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 14:24:42 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/18 15:24:53 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/18 18:02:28 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "../../../includes/push_swap.h"
 
 int	case_for_rr(t_carrier *pigeons, int moves, int dir, bool is_rr)
 {
@@ -63,7 +63,7 @@ t_stack	*node_to_send(t_carrier *pigeons, int first, int second, int *dir)
 	{
 		if (head->family == first || head->family == second)
 		{
-			moves = find_moves(pigeons, head->value, dir);
+			moves = find_moves(pigeons, head->value, dir, STACK_A);
 			if (moves < least)
 			{
 				least = moves;
@@ -93,7 +93,7 @@ int	send_two_families(t_carrier *pigeons, int first, int second, int *dir)
 		return (0);
 	}
 	which = node->family;
-	moves = find_moves(pigeons, node->value, dir);
+	moves = find_moves(pigeons, node->value, dir, STACK_A);
 	go(pigeons, moves, *dir, is_rr);
 	rollback(pigeons, pigeons->head_a, STACK_A);
 	is_rr = true - ((which % ((pigeons->families % 2 != 0) + 1) != 0));

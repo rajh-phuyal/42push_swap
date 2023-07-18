@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 20:10:50 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/18 15:13:38 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/18 20:41:07 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,18 @@
 
 void	the_sorting_portal(t_carrier *pigeons)
 {
-	pigeons->size = stack_size(pigeons->head_a);
-	if (pigeons->size <= 3)
-		only_three(pigeons, pigeons->head_a, pigeons->tail_a, pigeons->size);
-	else if (pigeons->size <= 5)
-		only_five(pigeons);
+	pigeons->size_a = stack_size(pigeons->head_a);
+	if (pigeons->size_a <= 3)
+		three_or_less(pigeons, pigeons->head_a, pigeons->tail_a, pigeons->size_a);
+	else if (pigeons->size_a <= 5)
+		five_or_less(pigeons);
+	else if (pigeons->size_a <= 10)
+		ten_or_less(pigeons);
 	else
 	{
 		rollback(pigeons, pigeons->head_a, STACK_A);
 		find_siblings(pigeons);
-		// ft_printf("---- STACK A ----\n");
-		// print_stack(pigeons->head_a);
 		send_to_b(pigeons, 0, 1);
-		// send_back(pigeons);
+		send_back(pigeons);
 	}
-	// ft_printf("---- FINAL STACK A ----\n");
-	// print_stack(pigeons->head_a);
 }

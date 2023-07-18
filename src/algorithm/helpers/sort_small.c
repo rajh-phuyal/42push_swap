@@ -6,13 +6,13 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 15:01:35 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/17 23:31:33 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/18 20:38:35 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/push_swap.h"
 
-void	only_three(t_carrier *pigeons, t_stack *head, t_stack *tail, int size)
+void	three_or_less(t_carrier *pigeons, t_stack *head, t_stack *tail, int size)
 {
 	if (size == 2)
 		sa(pigeons, 0);
@@ -41,23 +41,47 @@ void	only_three(t_carrier *pigeons, t_stack *head, t_stack *tail, int size)
 		sa(pigeons, 0);
 }
 
-void    only_five(t_carrier *pigeons)
+void    five_or_less(t_carrier *pigeons)
 {
 	int	moves;
 	int	dir;
 	int	count;
 
-	pigeons->size = stack_size(pigeons->head_a);
+	pigeons->size_a = stack_size(pigeons->head_a);
 	count = 0;
-	while (pigeons->size > 3)
+	while (pigeons->size_a > 3)
 	{
 		rollback(pigeons, pigeons->head_a, STACK_A);
-		moves = find_moves(pigeons, pigeons->min_a, &dir);
+		moves = find_moves(pigeons, pigeons->min_a, &dir, STACK_A);
 		go(pigeons, moves, dir, false);
-		pigeons->size--;
+		pigeons->size_a--;
 		count++;
 	}
-	only_three(pigeons, pigeons->head_a, pigeons->tail_a, pigeons->size);
+	three_or_less(pigeons, pigeons->head_a, pigeons->tail_a, pigeons->size_a);
+	while (count)
+	{
+		pa(pigeons);
+		count--;
+	}
+}
+
+void	ten_or_less(t_carrier *pigeons)
+{
+	int	moves;
+	int	dir;
+	int	count;
+
+	pigeons->size_a = stack_size(pigeons->head_a);
+	count = 0;
+	while (pigeons->size_a > 5)
+	{
+		rollback(pigeons, pigeons->head_a, STACK_A);
+		moves = find_moves(pigeons, pigeons->min_a, &dir, STACK_A);
+		go(pigeons, moves, dir, false);
+		pigeons->size_a--;
+		count++;
+	}
+	five_or_less(pigeons);
 	while (count)
 	{
 		pa(pigeons);

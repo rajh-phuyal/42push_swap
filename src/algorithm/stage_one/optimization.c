@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   optimize_stage_one.c                               :+:      :+:    :+:   */
+/*   optimization.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 13:48:59 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/18 15:21:11 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/18 20:34:14 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,9 @@ int	send_one_family(t_carrier *pigeons, int fam, int mid, int *dir)
 
 	node = node_to_send(pigeons, fam, 0, dir);
 	if (!node)
-	{
-		if (!(is_rr--))
-			rb(pigeons, 0);
 		return (0);
-	}
     val = node->value;
-	moves = find_moves(pigeons, node->value, dir);
+	moves = find_moves(pigeons, node->value, dir, STACK_A);
 	go(pigeons, moves, *dir, is_rr);
 	rollback(pigeons, pigeons->head_a, STACK_A);
     is_rr = true - (val > mid);
@@ -60,7 +56,7 @@ void    manual_send_last_two(t_carrier *pigeons, int first, int second, int *dir
     int count;
     int mid;
     t_stack *head;
-    
+
     mid = mean_of_family(pigeons->head_a, first);
     count = 0;
     while (count <= pigeons->siblings)
@@ -70,13 +66,15 @@ void    manual_send_last_two(t_carrier *pigeons, int first, int second, int *dir
         count++;
     }
     mid = mean_of_family(pigeons->head_a, second);
-    pigeons->size = stack_size(pigeons->head_a);
-    while (pigeons->size > 4)
+    pigeons->size_a = stack_size(pigeons->head_a);
+    while (pigeons->size_a > 4)
     {
         if (!send_one_family(pigeons, second, mid, dir))
             break ;
-        pigeons->size--;
+        pigeons->size_a--;
     }
+    if (is_stack_sorted(pigeons->head_a, ASC))
+        return ;
     rollback(pigeons, pigeons->head_a, STACK_A);
-    only_five(pigeons);
+    five_or_less(pigeons);
 }
