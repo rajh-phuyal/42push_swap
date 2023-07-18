@@ -6,13 +6,13 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 15:01:35 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/18 20:38:35 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/18 22:08:42 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/push_swap.h"
 
-void	three_or_less(t_carrier *pigeons, t_stack *head, t_stack *tail, int size)
+void	sort_three(t_carrier *pigeons, t_stack *head, t_stack *tail, int size)
 {
 	if (size == 2)
 		sa(pigeons, 0);
@@ -41,7 +41,7 @@ void	three_or_less(t_carrier *pigeons, t_stack *head, t_stack *tail, int size)
 		sa(pigeons, 0);
 }
 
-void    five_or_less(t_carrier *pigeons)
+void	sort_five(t_carrier *pigeons)
 {
 	int	moves;
 	int	dir;
@@ -57,7 +57,7 @@ void    five_or_less(t_carrier *pigeons)
 		pigeons->size_a--;
 		count++;
 	}
-	three_or_less(pigeons, pigeons->head_a, pigeons->tail_a, pigeons->size_a);
+	sort_three(pigeons, pigeons->head_a, pigeons->tail_a, pigeons->size_a);
 	while (count)
 	{
 		pa(pigeons);
@@ -65,7 +65,7 @@ void    five_or_less(t_carrier *pigeons)
 	}
 }
 
-void	ten_or_less(t_carrier *pigeons)
+void	sort_ten(t_carrier *pigeons)
 {
 	int	moves;
 	int	dir;
@@ -81,7 +81,7 @@ void	ten_or_less(t_carrier *pigeons)
 		pigeons->size_a--;
 		count++;
 	}
-	five_or_less(pigeons);
+	sort_five(pigeons);
 	while (count)
 	{
 		pa(pigeons);

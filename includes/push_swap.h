@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 18:05:50 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/18 20:38:44 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/18 22:06:59 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,9 +104,9 @@ void	rrr(t_carrier *pigeons);
 
 /* algorithm */
 void	the_sorting_portal(t_carrier *pigeons);
-void	ten_or_less(t_carrier *pigeons);
-void    five_or_less(t_carrier *pigeons);
-void	three_or_less(t_carrier *pigeons, t_stack *head, t_stack *tail, int size);
+void	sort_ten(t_carrier *pigeons);
+void	sort_five(t_carrier *pigeons);
+void	sort_three(t_carrier *pigeons, t_stack *head, t_stack *tail, int size);
 
 void	rollback(t_carrier *pigeons, t_stack *stack, int stk);
 void	find_siblings(t_carrier *pigeons);
@@ -122,7 +122,7 @@ int		find_moves(t_carrier *pigeons, int val, int *direction, int stk);
 void	send_to_b(t_carrier *pigeons, int first, int second);
 void	go(t_carrier *pigeons, int moves, int dir, bool is_rr);
 t_stack	*node_to_send(t_carrier *pigeons, int first, int second, int *dir);
-void    manual_send_last_two(t_carrier *pigeons, int first, int second, int *dir);
+void	send_last_two(t_carrier *pigeons, int first, int second, int *dir);
 
 /* stage two */
 void	send_back(t_carrier *pigeons);

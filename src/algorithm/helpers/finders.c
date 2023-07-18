@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 14:29:37 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/18 19:28:23 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/18 22:01:44 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ int	find_moves(t_carrier *pigeons, int val, int *direction, int stk)
 		else
 			return (pigeons->size_b - index);
 	}
+	else
+		return (-1);
 }
 
 int	find_index_in_arr(int *arr, int size, int to_find)
@@ -73,7 +75,8 @@ void	find_siblings(t_carrier *pigeons)
 	head = pigeons->head_a;
 	while (head)
 	{
-		index = find_index_in_arr(pigeons->sorted, pigeons->size_a, head->value);
+		index = find_index_in_arr(pigeons->sorted,
+				pigeons->size_a, head->value);
 		if (index >= (pigeons->size_a - 4))
 			head->family = -1;
 		else

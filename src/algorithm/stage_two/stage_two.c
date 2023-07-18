@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 14:24:59 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/18 20:39:52 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/18 22:00:53 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ int	send_one_value(t_carrier *pigeons, int *dir)
 	int			moves;
 	int			mv_big;
 	int			mv_snd;
-	static bool was_big = false;
+	static bool	was_big = false;
 
 	mv_big = find_moves(pigeons, pigeons->max_b, dir, STACK_B);
 	t_dir = *dir;
