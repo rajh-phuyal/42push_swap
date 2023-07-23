@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 14:24:59 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/18 22:00:53 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/23 12:27:36 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	find_second_biggest(t_stack *head, int max)
 	return (snd);
 }
 
-void	send_back_to_a(t_carrier *pigeons, int moves, int dir)
+void	send_back_to_a(t_carrier *pigeons, int moves, int dir, int l_biggest)
 {
 	if (!pigeons->head_b)
 		return ;
@@ -49,13 +49,13 @@ void	send_back_to_a(t_carrier *pigeons, int moves, int dir)
 	return ;
 }
 
-int	send_one_value(t_carrier *pigeons, int *dir)
+void	send_one_value(t_carrier *pigeons, int *dir)
 {
 	int			t_dir;
 	int			moves;
 	int			mv_big;
 	int			mv_snd;
-	static bool	was_big = false;
+	static bool	l_biggest = false;
 
 	mv_big = find_moves(pigeons, pigeons->max_b, dir, STACK_B);
 	t_dir = *dir;
@@ -68,7 +68,8 @@ int	send_one_value(t_carrier *pigeons, int *dir)
 	}
 	else
 		moves = mv_snd;
-	send_back_to_a(pigeons, moves, *dir);
+	send_back_to_a(pigeons, moves, *dir, l_biggest);
+	l_biggest = (mv_big < mv_snd);
 }
 
 void	send_back(t_carrier *pigeons)
