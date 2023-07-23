@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 14:29:37 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/23 21:28:55 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/23 23:49:28 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,16 +77,17 @@ void	find_population(t_carrier *pigeons)
 void	find_siblings(t_carrier *pigeons)
 {
 	int		index;
+	int		*sorted;
 	t_stack	*head;
 
 	find_population(pigeons);
-	pigeons->sorted = map_and_sort(pigeons->head_a, pigeons->size_a);
-	if (!pigeons->sorted)
+	sorted = map_and_sort(pigeons->head_a, pigeons->size_a);
+	if (!sorted)
 		return ;
 	head = pigeons->head_a;
 	while (head)
 	{
-		index = find_index_in_arr(pigeons->sorted,
+		index = find_index_in_arr(sorted,
 				pigeons->size_a, head->value);
 		if (index >= (pigeons->size_a - 4))
 			head->family = -1;
@@ -96,4 +97,5 @@ void	find_siblings(t_carrier *pigeons)
 				(index / pigeons->siblings);
 		head = head->next;
 	}
+	free(sorted);
 }

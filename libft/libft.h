@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/02 16:15:19 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/01/19 19:09:42 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/23 23:23:18 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@
 # include <fcntl.h>
 # include <stdbool.h>
 
-/* 
-structure for nodes to contain a content pointer 
+/*
+structure for nodes to contain a content pointer
 an a link to the next node
 */
 typedef struct s_list
@@ -68,6 +68,7 @@ void	*ft_memchr(const void *str, int c, size_t n);
 /* functions that manipulate, concatiante, compare, etc with strings*/
 int		ft_atoi(const char *str);
 int		ft_strlen(const char *str);
+int		ft_empty_str(const char *str);
 int		ft_split_len(char **argv);
 int		ft_strncmp(const char *s1, const char *s2, size_t num);
 char	*ft_itoa(int n);
@@ -112,4 +113,4 @@ int		create_line(char **line_ptr, char *buffer, size_t size);
 int		manage_buffer(char *buffer);
 char	*get_next_line(int fd);
 
-#endif 
+#endif

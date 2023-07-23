@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split_len.c                                     :+:      :+:    :+:   */
+/*   creator.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/19 19:08:57 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/23 23:24:33 by rphuyal          ###   ########.fr       */
+/*   Created: 2023/07/23 22:09:12 by rphuyal           #+#    #+#             */
+/*   Updated: 2023/07/23 22:09:39 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft.h"
+#include "../../includes/push_swap.h"
 
-int	ft_split_len(char **argv)
+t_stack *create_stack(int value, int index)
 {
-	int	i;
+	t_stack	*new;
 
-	i = 1;
-	while (argv && argv[i])
-		i++;
-	return (i);
+	new = (t_stack *)malloc(sizeof(t_stack));
+	if (!new)
+		return (NULL);
+	new->value = value;
+	new->index = index;
+	new->next = NULL;
+	return (new);
 }

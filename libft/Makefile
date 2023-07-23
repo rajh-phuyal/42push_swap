@@ -6,7 +6,7 @@
 #    By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/02 16:15:26 by rphuyal           #+#    #+#              #
-#    Updated: 2023/01/19 19:09:58 by rphuyal          ###   ########.fr        #
+#    Updated: 2023/07/23 23:15:36 by rphuyal          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,7 @@ SRC    = strings/ft_atoi.c \
 		strings/ft_strnstr.c \
 		strings/ft_strrchr.c \
 		strings/ft_strjoin.c \
+		strings/ft_empty_str.c \
 		chars/ft_tolower.c \
 		chars/ft_toupper.c \
 		strings/ft_strlcat.c \
@@ -68,7 +69,7 @@ SRC    = strings/ft_atoi.c \
 		t_list/ft_lstmap.c \
 		gnl/get_next_line.c \
 		gnl/get_next_line_utils.c \
-		
+
 OBJ = $(SRC:.c=.o)
 
 
@@ -76,7 +77,7 @@ all:	$(NAME)
 
 $(NAME):    $(OBJ)
 		@ar rcs $(NAME) $(OBJ)
-		
+
 clean:
 		@$(RM) $(OBJ)
 

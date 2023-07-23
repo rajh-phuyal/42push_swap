@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 18:05:50 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/23 20:51:04 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/23 21:52:28 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,9 @@ typedef struct carrier
 	int				min_b;
 	int				max_b;
 	bool			c_snd;
+	char			**argv;
 	int				size_a;
 	int				size_b;
-	int				*sorted;
 	int				siblings;
 	int				families;
 	struct stack	*head_a;

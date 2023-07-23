@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 14:24:42 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/23 21:36:17 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/23 23:59:42 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ void	send_to_b(t_carrier *pigeons, int first, int second)
 				continue ;
 			}
 			count++;
+			pigeons->size_a--;
 		}
 		else
 			count = 0;

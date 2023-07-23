@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split_len.c                                     :+:      :+:    :+:   */
+/*   ft_empty_str.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/19 19:08:57 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/23 23:24:33 by rphuyal          ###   ########.fr       */
+/*   Created: 2023/07/23 23:10:28 by rphuyal           #+#    #+#             */
+/*   Updated: 2023/07/23 23:22:58 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft.h"
 
-int	ft_split_len(char **argv)
+int	ft_empty_str(const char *str)
 {
-	int	i;
-
-	i = 1;
-	while (argv && argv[i])
-		i++;
-	return (i);
+	while (*str)
+	{
+		if (*str != ' ')
+			return (0);
+		str++;
+	}
+	return (1);
 }

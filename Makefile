@@ -6,7 +6,7 @@
 #    By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/02 15:13:33 by rphuyal           #+#    #+#              #
-#    Updated: 2023/07/23 21:31:44 by rphuyal          ###   ########.fr        #
+#    Updated: 2023/07/23 21:51:05 by rphuyal          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ SRC = src/core/main.c \
 		src/global_helpers/print_stack.c \
 		src/global_helpers/find_index.c \
 		src/global_helpers/stack_utils.c \
+		src/global_helpers/freedom.c \
 
 OBJ   = $(patsubst src/%.c, obj/%.o, $(SRC))
 
