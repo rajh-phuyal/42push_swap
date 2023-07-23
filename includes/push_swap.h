@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 18:05:50 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/23 15:37:57 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/23 20:51:04 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,9 @@ void	send_last_two(t_carrier *pigeons, int first, int second, int *dir);
 
 /* stage two */
 void	send_back(t_carrier *pigeons);
-void	find_place_instack(t_carrier *pigeons, bool c_snd, bool l_snd);
+void	manage_last_snd(t_carrier *pigeons);
+int		find_place_instack(t_carrier *pigeons,
+			bool c_snd, bool l_snd, bool get);
 
 /* end */
 

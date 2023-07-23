@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/13 20:10:50 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/23 15:52:09 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/23 20:07:38 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	the_sorting_portal(t_carrier *pigeons)
 		rollback(pigeons, pigeons->head_a, STACK_A);
 		find_siblings(pigeons);
 		send_to_b(pigeons, 0, 1);
-		printf("sending back\n");
 		send_back(pigeons);
 	}
 }

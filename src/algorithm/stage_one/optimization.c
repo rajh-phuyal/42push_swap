@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 13:48:59 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/18 22:06:13 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/23 21:33:25 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ void	send_last_two(t_carrier *pigeons, int first, int second, int *dir)
 {
 	int		count;
 	int		mid;
-	t_stack	*head;
 
 	mid = mean_of_family(pigeons->head_a, first);
 	count = 0;

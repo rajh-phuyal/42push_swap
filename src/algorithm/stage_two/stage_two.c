@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 14:24:59 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/23 15:48:12 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/23 17:27:07 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,6 @@ void	send_back_to_a(t_carrier *pigeons, int moves, int dir, int l_snd)
 {
 	if (!pigeons->head_b)
 		return ;
-	else if (!pigeons->head_b->next)
-	{
-		pa(pigeons);
-		return ;
-	}
 	while (moves)
 	{
 		if (dir == NORTH)
@@ -29,7 +24,7 @@ void	send_back_to_a(t_carrier *pigeons, int moves, int dir, int l_snd)
 			rrb(pigeons, 0);
 		moves--;
 	}
-	find_place_instack(pigeons, pigeons->c_snd, l_snd);
+	find_place_instack(pigeons, pigeons->c_snd, l_snd, false);
 	return ;
 }
 
@@ -84,10 +79,11 @@ void	send_back(t_carrier *pigeons)
 	if (!pigeons->head_b)
 		return ;
 	pigeons->size_b = stack_size(pigeons->head_b);
-	while (pigeons->head_b)
+	while (pigeons->size_b > 1)
 	{
 		rollback(pigeons, pigeons->head_b, STACK_B);
 		send_one_value(pigeons, &dir);
 		pigeons->size_b--;
 	}
+	manage_last_snd(pigeons);
 }

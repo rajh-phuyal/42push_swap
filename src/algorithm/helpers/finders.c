@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 14:29:37 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/18 22:01:44 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/23 21:28:55 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,18 +57,29 @@ int	find_index_in_arr(int *arr, int size, int to_find)
 	return (find_index_in_arr(arr, size - 1, to_find));
 }
 
+void	find_population(t_carrier *pigeons)
+{
+	int		families;
+	int		siblings;
+
+	siblings = ((pigeons->size_a == 100) * 12) + \
+				(35 * (pigeons->size_a == 500));
+	if (!siblings)
+		siblings = ((10 * (pigeons->size_a < 100)) + \
+				(25 * (pigeons->size_a > 100)) + \
+				(40 * (pigeons->size_a > 500)));
+	families = (pigeons->size_a / siblings) + \
+		(pigeons->size_a % siblings != 0);
+	pigeons->siblings = siblings;
+	pigeons->families = families;
+}
+
 void	find_siblings(t_carrier *pigeons)
 {
 	int		index;
-	int		families;
-	int		max_siblings;
 	t_stack	*head;
 
-	max_siblings = 12;
-	families = (pigeons->size_a / max_siblings + \
-			(pigeons->size_a % max_siblings != 0));
-	pigeons->siblings = max_siblings;
-	pigeons->families = families;
+	find_population(pigeons);
 	pigeons->sorted = map_and_sort(pigeons->head_a, pigeons->size_a);
 	if (!pigeons->sorted)
 		return ;
@@ -80,8 +91,9 @@ void	find_siblings(t_carrier *pigeons)
 		if (index >= (pigeons->size_a - 4))
 			head->family = -1;
 		else
-			head->family = ((families / max_siblings) - \
-				(families >= max_siblings)) + (index / max_siblings);
+			head->family = ((pigeons->families / pigeons->siblings) - \
+				(pigeons->families >= pigeons->siblings)) + \
+				(index / pigeons->siblings);
 		head = head->next;
 	}
 }

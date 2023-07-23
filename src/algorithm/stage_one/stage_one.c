@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 14:24:42 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/18 22:06:25 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/23 21:36:17 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int	send_two_families(t_carrier *pigeons, int first, int second, int *dir)
 	moves = find_moves(pigeons, node->value, dir, STACK_A);
 	go(pigeons, moves, *dir, is_rr);
 	rollback(pigeons, pigeons->head_a, STACK_A);
-	is_rr = true - ((which % ((pigeons->families % 2 != 0) + 1) != 0));
+	is_rr = true - (which % 2 != 0);
 	return (1);
 }
 
@@ -104,7 +104,6 @@ void	send_to_b(t_carrier *pigeons, int first, int second)
 {
 	int		dir;
 	int		count;
-	t_stack	*node;
 
 	count = 0;
 	dir = NORTH;
@@ -118,11 +117,12 @@ void	send_to_b(t_carrier *pigeons, int first, int second)
 			{
 				first += 2;
 				second += 2;
-				count = 0;
 				continue ;
 			}
 			count++;
 		}
+		else
+			count = 0;
 	}
 	send_last_two(pigeons, first, second, &dir);
 }

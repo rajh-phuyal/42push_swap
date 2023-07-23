@@ -6,7 +6,7 @@
 #    By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/02 15:13:33 by rphuyal           #+#    #+#              #
-#    Updated: 2023/07/23 15:38:46 by rphuyal          ###   ########.fr        #
+#    Updated: 2023/07/23 21:31:44 by rphuyal          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME  = push_swap
 
 CC    = @gcc
 
-FLAGS = -g -fsanitize=address
+FLAGS = -Wall -Wextra -Werror -g -fsanitize=address
 
 LFT   = libft/libft.a
 
