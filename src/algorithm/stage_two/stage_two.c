@@ -6,11 +6,32 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 14:24:59 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/23 12:27:36 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/23 15:48:12 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../../includes/push_swap.h"
+
+void	send_back_to_a(t_carrier *pigeons, int moves, int dir, int l_snd)
+{
+	if (!pigeons->head_b)
+		return ;
+	else if (!pigeons->head_b->next)
+	{
+		pa(pigeons);
+		return ;
+	}
+	while (moves)
+	{
+		if (dir == NORTH)
+			rb(pigeons, 0);
+		else
+			rrb(pigeons, 0);
+		moves--;
+	}
+	find_place_instack(pigeons, pigeons->c_snd, l_snd);
+	return ;
+}
 
 int	find_second_biggest(t_stack *head, int max)
 {
@@ -28,48 +49,31 @@ int	find_second_biggest(t_stack *head, int max)
 	return (snd);
 }
 
-void	send_back_to_a(t_carrier *pigeons, int moves, int dir, int l_biggest)
-{
-	if (!pigeons->head_b)
-		return ;
-	else if (!pigeons->head_b->next)
-	{
-		pa(pigeons);
-		return ;
-	}
-	while (moves)
-	{
-		if (dir == NORTH)
-			rb(pigeons, 0);
-		else
-			rrb(pigeons, 0);
-		moves--;
-	}
-	pa(pigeons);
-	return ;
-}
-
 void	send_one_value(t_carrier *pigeons, int *dir)
 {
 	int			t_dir;
 	int			moves;
 	int			mv_big;
 	int			mv_snd;
-	static bool	l_biggest = false;
+	static bool	l_snd = false;
 
+	pigeons->c_snd = false;
 	mv_big = find_moves(pigeons, pigeons->max_b, dir, STACK_B);
 	t_dir = *dir;
 	mv_snd = find_moves(pigeons,
 			find_second_biggest(pigeons->head_b, pigeons->max_b), dir, STACK_B);
-	if (mv_big < mv_snd)
+	if (mv_big <= mv_snd)
 	{
 		moves = mv_big;
 		*dir = t_dir;
 	}
 	else
+	{
 		moves = mv_snd;
-	send_back_to_a(pigeons, moves, *dir, l_biggest);
-	l_biggest = (mv_big < mv_snd);
+		pigeons->c_snd = true;
+	}
+	send_back_to_a(pigeons, moves, *dir, l_snd);
+	l_snd = (mv_big > mv_snd);
 }
 
 void	send_back(t_carrier *pigeons)

@@ -6,7 +6,7 @@
 #    By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/02 15:13:33 by rphuyal           #+#    #+#              #
-#    Updated: 2023/07/18 16:33:52 by rphuyal          ###   ########.fr        #
+#    Updated: 2023/07/23 15:38:46 by rphuyal          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,6 +34,7 @@ SRC = src/core/main.c \
 		src/algorithm/stage_one/map_and_sort.c \
 		src/algorithm/stage_one/optimization.c \
 		src/algorithm/stage_two/stage_two.c \
+		src/algorithm/stage_two/utilities.c \
 		src/global_helpers/print_stack.c \
 		src/global_helpers/find_index.c \
 		src/global_helpers/stack_utils.c \

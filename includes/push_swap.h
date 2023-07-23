@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 18:05:50 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/18 22:06:59 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/23 15:37:57 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ typedef struct carrier
 	int				max_a;
 	int				min_b;
 	int				max_b;
+	bool			c_snd;
 	int				size_a;
 	int				size_b;
 	int				*sorted;
@@ -53,7 +54,6 @@ typedef struct carrier
 	struct stack	*head_b;
 	struct stack	*tail_b;
 }	t_carrier;
-
 
 /* main */
 int		main(int argc, char **argv);
@@ -126,7 +126,7 @@ void	send_last_two(t_carrier *pigeons, int first, int second, int *dir);
 
 /* stage two */
 void	send_back(t_carrier *pigeons);
-
+void	find_place_instack(t_carrier *pigeons, bool c_snd, bool l_snd);
 
 /* end */
 
