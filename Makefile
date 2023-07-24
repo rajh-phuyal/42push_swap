@@ -6,11 +6,13 @@
 #    By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/02 15:13:33 by rphuyal           #+#    #+#              #
-#    Updated: 2023/07/24 03:49:56 by rphuyal          ###   ########.fr        #
+#    Updated: 2023/07/24 13:07:32 by rphuyal          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME  = push_swap
+
+BONUS = checker
 
 CC    = @gcc
 
@@ -42,6 +44,18 @@ SRC = src/core/main.c \
 
 OBJ   = $(patsubst src/%.c, obj/%.o, $(SRC))
 
+BONUS_SRC = bonus/checker.c \
+			src/stack/swap.c \
+			src/stack/push.c \
+			src/stack/rotate.c \
+			src/stack/reverse_rotate.c \
+			src/core/validate_inputs.c \
+			src/global_helpers/freedom.c \
+			src/global_helpers/find_index.c \
+			src/global_helpers/stack_utils.c \
+
+BONUS_OBJ := $(SRC:.c=.o)
+
 # COLORS
 CBOLD   = \033[0;1m
 RED     = \033[0;41m
@@ -52,10 +66,17 @@ RESET   = \033[0m
 
 all: $(LFT) obj $(NAME)
 
+bonus: $(LFT) $(BONUS)
+
 $(NAME): $(OBJ)
 	@echo "$(CBOLD)$(YELLOW)  Compiling $(NAME) $(RESET)"
 	$(CC) $(FLAGS) -o $@ $^ $(LFT)
 	@echo "$(CBOLD)$(GREEN)    $(NAME) ready!  $(RESET)"
+
+$(BONUS): $(BONUS_OBJ)
+	@echo "$(CBOLD)$(YELLOW)   Compiling $(BONUS)  $(RESET)"
+	$(CC) $(FLAGS) -o $@ $^ $(LFT)
+	@echo "$(CBOLD)$(GREEN)     $(BONUS) ready!   $(RESET)"
 
 $(LFT):
 	@echo "$(CBOLD)$(YELLOW)    Compiling Libft   $(RESET)"
@@ -69,15 +90,24 @@ obj/%.o: src/%.c
 	@mkdir -p $(dir $@)
 	$(CC) $(FLAGS) $(INC) -c $< -o $@
 
+b_obj:
+	@mkdir -p b_obj
+
+b_obj/%.o: bonus/%.c
+	@mkdir -p $(dir $@)
+	$(CC) $(FLAGS) $(INC) -c $< -o $@
+
 clean:
 	@make -sC libft clean > /dev/null
 	@rm -rf $(OBJ) obj
+	@rm -rf $(BONUS_OBJ) b_obj
 	@echo "$(CBOLD)$(BLUE)    Objects removed!  $(RESET)"
 
 fclean: clean
 	@make -sC libft fclean
 	@rm -rf $(NAME)
-	@echo "$(CBOLD)$(BLUE)    Binaries removed! $(RESET)"
+	@rm -rf $(BONUS)
+	@echo "$(CBOLD)$(BLUE)    Binaries removed! $(RESET)\n"
 
 re: fclean all
 
