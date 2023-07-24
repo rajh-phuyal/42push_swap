@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 18:05:50 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/23 21:52:28 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/24 03:27:48 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ bool	validate_input(int save, char *str);
 bool	int_within_range(int num, char *str);
 bool	no_random_chars(char *str);
 int		duplicate_inputs(t_carrier *pigeons);
+int		special_parcing(t_carrier *pigeons, char **argv, int *argc);
 int		clean_input(int i, int count, char **numbers, t_carrier *pigeons);
 
 /* exit */

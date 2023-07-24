@@ -29,19 +29,11 @@ void assignFamilyNumbers(t_stack *head, int *sortedArray, int arraySize) {
 }
 
 int main() {
-	// Assuming the linked list is already created and populated with values.
-	// Also assuming the sorted array is available.
-
-	t_stack *head = NULL;  // Initialize head of the linked list
-
-	// Code to populate the linked list goes here...
-
 	int sortedArray[] = { 1, 2, 4, 5, 7, 8, 9, 10, 12 };
 	int arraySize = sizeof(sortedArray) / sizeof(sortedArray[0]);
 
 	assignFamilyNumbers(head, sortedArray, arraySize);
 
-	// Now each node in the linked list should have its corresponding family number assigned.
 	printf("fam: %d\n", head->family);
 	while (head) {
 		head = head->next;

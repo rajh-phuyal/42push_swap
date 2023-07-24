@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 18:32:21 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/23 23:37:30 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/24 03:36:09 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ int	duplicate_inputs(t_carrier *pigeons)
 functions above are called from here for each argument*/
 bool	validate_input(int save, char *str)
 {
+
 	if ((save || !ft_strncmp(str, "0", ft_strlen(str))) \
 		&& int_within_range(save, str) && no_random_chars(str))
 		return (true);
@@ -104,7 +105,7 @@ int	clean_input(int i, int count, char **numbers, t_carrier *pigeons)
 		{
 			if (node)
 				pigeons->head_a = node;
-			return (write(2, "Error\n", 6) - 5);
+			return (write(2, "Error\n", 6) - 6);
 		}
 	}
 	return (duplicate_inputs(pigeons));
