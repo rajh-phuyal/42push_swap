@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 18:05:50 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/24 03:27:48 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/24 17:04:25 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ int		find_index(char **argv);
 /* stack */
 /* basic stack operations */
 int		stack_size(t_stack *lst);
-int		is_stack_sorted(t_stack *head, int order);
+int		is_stack_sorted(t_stack *head);
 t_stack	*push(int num, int fam, t_stack *head);
 t_stack	*pop(t_stack *head);
 /* end */
@@ -107,7 +107,7 @@ void	rrr(t_carrier *pigeons);
 void	the_sorting_portal(t_carrier *pigeons);
 void	sort_ten(t_carrier *pigeons);
 void	sort_five(t_carrier *pigeons);
-void	sort_three(t_carrier *pigeons, t_stack *head, t_stack *tail, int size);
+void	sort_three(t_carrier *pigeons, int size);
 
 void	rollback(t_carrier *pigeons, t_stack *stack, int stk);
 void	find_siblings(t_carrier *pigeons);

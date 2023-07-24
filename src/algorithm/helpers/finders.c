@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 14:29:37 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/23 23:49:28 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/24 16:34:59 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,8 @@ void	find_population(t_carrier *pigeons)
 		(pigeons->size_a % siblings != 0);
 	pigeons->siblings = siblings;
 	pigeons->families = families;
+	// printf("siblings : %d\n", siblings);
+	// printf("families : %d\n", families);
 }
 
 void	find_siblings(t_carrier *pigeons)
@@ -90,7 +92,10 @@ void	find_siblings(t_carrier *pigeons)
 		index = find_index_in_arr(sorted,
 				pigeons->size_a, head->value);
 		if (index >= (pigeons->size_a - 4))
+		{
+			// printf("last 4: %d\n", head->value);
 			head->family = -1;
+		}
 		else
 			head->family = ((pigeons->families / pigeons->siblings) - \
 				(pigeons->families >= pigeons->siblings)) + \

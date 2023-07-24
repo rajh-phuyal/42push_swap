@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/17 13:48:59 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/23 21:33:25 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/24 16:49:13 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,23 +56,24 @@ void	send_last_two(t_carrier *pigeons, int first, int second, int *dir)
 	int		count;
 	int		mid;
 
-	mid = mean_of_family(pigeons->head_a, first);
 	count = 0;
+	mid = mean_of_family(pigeons->head_a, first);
+	pigeons->size_a = stack_size(pigeons->head_a);
 	while (count <= pigeons->siblings)
 	{
 		if (!send_one_family(pigeons, first, mid, dir))
 			break ;
 		count++;
+		pigeons->size_a--;
 	}
 	mid = mean_of_family(pigeons->head_a, second);
-	pigeons->size_a = stack_size(pigeons->head_a);
 	while (pigeons->size_a > 4)
 	{
 		if (!send_one_family(pigeons, second, mid, dir))
 			break ;
 		pigeons->size_a--;
 	}
-	if (is_stack_sorted(pigeons->head_a, ASC))
+	if (is_stack_sorted(pigeons->head_a))
 		return ;
 	rollback(pigeons, pigeons->head_a, STACK_A);
 	sort_five(pigeons);

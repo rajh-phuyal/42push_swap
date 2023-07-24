@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 13:56:16 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/18 22:08:57 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/24 16:24:33 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@ int	find_index(char **argv)
 {
 	if (!ft_strncmp(argv[0], "./push_swap", 12))
 		return (1);
+	else if (!ft_strnstr(argv[0], "./push_swap", ft_strlen(argv[0])))
+		return (1);
 	else
 		return (0);
 }
+

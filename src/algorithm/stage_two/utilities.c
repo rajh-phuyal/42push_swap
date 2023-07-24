@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 16:56:01 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/23 17:35:57 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/24 16:14:13 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,10 @@ int	find_place_instack(t_carrier *pigeons, bool c_snd, bool l_snd, bool get)
 {
 	static int	snd_count = 0;
 
+	if (get)
+		return (snd_count + c_snd);
 	if (c_snd)
 		snd_count++;
-	if (get)
-		return (snd_count);
 	if ((!c_snd && !l_snd))
 		pa(pigeons);
 	else if ((c_snd && l_snd) || (c_snd && !l_snd))

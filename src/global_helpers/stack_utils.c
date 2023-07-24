@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 13:56:13 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/23 21:50:11 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/24 16:49:44 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,13 @@ int	stack_size(t_stack *head)
 }
 
 /* check if the stack is sorted */
-int	is_stack_sorted(t_stack *head, int order)
+int	is_stack_sorted(t_stack *head)
 {
-	int	ops;
-
 	if (!head)
 		return (0);
 	while (head->next)
 	{
-		if (order == ASC)
-			ops = (head->value > head->next->value);
-		else if (order == DESC)
-			ops = (head->value < head->next->value);
-		else
-			return (0);
-		if (ops)
+		if (head->value > head->next->value)
 			return (0);
 		head = head->next;
 	}
