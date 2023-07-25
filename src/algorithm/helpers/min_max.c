@@ -6,7 +6,7 @@
 /*   By: rphuyal <rphuyal@student.42lisboa.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 02:04:42 by rphuyal           #+#    #+#             */
-/*   Updated: 2023/07/18 18:43:00 by rphuyal          ###   ########.fr       */
+/*   Updated: 2023/07/25 22:11:30 by rphuyal          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,15 @@ void	find_min_max(t_carrier *pigeons, t_stack *stack, int index, int stk)
 
 void	rollback(t_carrier *pigeons, t_stack *stack, int stk)
 {
-	pigeons->min_a = INT_MAX;
-	pigeons->max_a = INT_MIN;
-	pigeons->min_b = INT_MAX;
-	pigeons->max_b = INT_MIN;
+	if (stk == STACK_A)
+	{
+		pigeons->min_a = INT_MAX;
+		pigeons->max_a = INT_MIN;
+	}
+	else if (stk == STACK_B)
+	{
+		pigeons->min_b = INT_MAX;
+		pigeons->max_b = INT_MIN;
+	}
 	find_min_max(pigeons, stack, 0, stk);
 }
