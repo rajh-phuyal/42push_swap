@@ -19,29 +19,30 @@ and algorithmical thinking.
 ---
 
 ### Moves allowed to be performed on the stack
-- **sa** - swap a - swap the first 2 elements at the top of stack a. Do nothing if there is only one or no elements.
-- **sb** - swap b - swap the first 2 elements at the top of stack b. Do nothing if there is only one or no elements.
-- **ss** - sa and sb at the same time.
-- **pa** - push a - take the first element at the top of b and put it at the top of a. Do nothing if b is empty.
-- **pb** - push b - take the first element at the top of a and put it at the top of b. Do nothing if a is empty.
-- **ra** - rotate a - shift up all elements of stack a by 1. The first element becomes the last one.
-- **rb** - rotate b - shift up all elements of stack b by 1. The first element becomes the last one.
-- **rr** - ra and rb at the same time.
-- **rra** - reverse rotate a - shift down all elements of stack a by 1. The last element becomes the first one.
-- **rrb** - reverse rotate b - shift down all elements of stack b by 1. The last element becomes the first one.
-- **rrr** - rra and rrb at the same time.
+- **`sa`** - swap a - swap the first 2 elements at the top of stack a. Do nothing if there is only one or no elements.
+- **`sb`** - swap b - swap the first 2 elements at the top of stack b. Do nothing if there is only one or no elements.
+- **`ss`** - sa and sb at the same time.
+- **`pa`** - push a - take the first element at the top of b and put it at the top of a. Do nothing if b is empty.
+- **`pb`** - push b - take the first element at the top of a and put it at the top of b. Do nothing if a is empty.
+- **`ra`** - rotate a - shift up all elements of stack a by 1. The first element becomes the last one.
+- **`rb`** - rotate b - shift up all elements of stack b by 1. The first element becomes the last one.
+- **`rr`** - ra and rb at the same time.
+- **`rra`** - reverse rotate a - shift down all elements of stack a by 1. The last element becomes the first one.
+- **`rrb`** - reverse rotate b - shift down all elements of stack b by 1. The last element becomes the first one.
+- **`rrr`** - rra and rrb at the same time.
 
 ---
 
 ## Algorithm (Almighty Push Swap)
-## add the picture here
+<img width="622" alt="Screenshot 2023-11-12 at 18 31 42" src="https://github.com/rajh-phuyal/42push_swap/assets/81531002/abb3b4e9-4913-47c8-8b68-c1c5d8aefb10">
+
 
 ### Preparing for the algorithm
 The algorithm is based on the idea of sorting the data in chunks.
 The size of the chunks is calculated based on the size of the stack.
---- washkdfbivanjfs
+(write a desc for the table beloow)
 | Size of stack | Chunksize | Number of chunks | Remaining nodes on stack A|
-| ----------- | ----------- | ----------- | ----------- |
+| :-----------: | :-----------: | :-----------: | :-----------: |
 | 100 | 12 | 8 | 4 |
 | 500 | 35 | 14 | 10 |
 
@@ -85,8 +86,9 @@ APS repeats the above steps until the stack A less the 4 nodes.
 The cost of each of the nearest nodes from both chunks from the edge is taken into account the the least costly node is chosen.
 
 
-# Exception (Small Data Set <= 5 numbers)
+### Exception (Small Data Set <= 5 numbers)
 ```
+something here
 ```
 
 ---
