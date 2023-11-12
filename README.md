@@ -43,8 +43,17 @@ and algorithmical thinking.
 ---
 
 ## Algorithm (Almighty Push Swap)
-<img width="622" alt="Screenshot 2023-11-12 at 18 31 42" src="https://github.com/rajh-phuyal/42push_swap/assets/81531002/abb3b4e9-4913-47c8-8b68-c1c5d8aefb10">
+![Screenshot from 2023-11-12 23-10-14](https://github.com/rajh-phuyal/42push_swap/assets/117525743/7bc39584-4e91-4f31-bfa7-dbaa781f2705)
 
+
+
+## Stats
+| **Number of elements** | Average result | Best result |
+| :----------------: | :---------: | :---------: |
+|   100             |    615      |    570       |
+|   500             |    5100     |    4800      |
+
+---
 
 ### Preparing for the algorithm
 The algorithm is based on the idea of sorting the data in chunks.
@@ -93,7 +102,13 @@ Push the second smallest number to stack A
 Push the smallest number to stack A
 ```
 
-### The algorithm
+### Logic 
+
+## **`100 values`**
+![100](https://github.com/rajh-phuyal/42push_swap/assets/117525743/f1a20e1d-e58d-4a2b-9b1f-fa9f23c6dee0)
+
+## **`500 values`**
+![500](https://github.com/rajh-phuyal/42push_swap/assets/117525743/71bc155f-af43-4bc1-bc79-9324b8cb86e7)
 
 The algorithm is divided into two parts:
 
@@ -171,3 +186,4 @@ make
 - [**Sorting Algorithms**](https://en.wikipedia.org/wiki/Sorting_algorithm)
 - [**Big O Notation**](https://en.wikipedia.org/wiki/Big_O_notation)
 - [**Push Swap Visualizer**](https://github.com/o-reo/push_swap_visualizer.git)
+- [**Push Swap Tester**](https://github.com/louisabricot/push_swap_tester)
