@@ -67,7 +67,7 @@ chunksize = stacksize / number of chunks
 ## Sorting
 
 ### Small Data Set <= 5 numbers
-**Sorting 3 numbers**
+**Sorting 3 numbers :**
 ```
 Only few combinations of possibilities exist for sorting 3 numbers.
 We needed to sort any combination of 3 numbers in 2 moves.
@@ -82,7 +82,7 @@ if first element is greater than second element:
     swap top two elements
 ```
 
-**Sorting 5 numbers**
+**Sorting 5 numbers :**
 ```
 We needed to sort any combination of 5 numbers in 12 moves at most.
 Pseudo code for sorting 5 numbers:
@@ -98,6 +98,7 @@ Push the smallest number to stack A
 The algorithm is divided into two parts:
 
 _`Sending chunks to stack B`_
+
 Starting from the smallest chunk pair, APS tries to find lowest cost for the nodes of those chunks.
 APS makes three comparisons for the nodes of the chunks:
 ```
@@ -121,6 +122,7 @@ Now, APS has all the numbers in stack B chunked.
 =(insert the stack B image here)=
 
 _`Sending nodes back to stack A`_
+
 Sending back to stack A relies on the similar idea of the direction, cost and proximity of the nodes to the edge.
 But with a key difference, the difference being that APS is now calculating the cost and the direction for the
 `largest` and the `second largest` values in the stack B.
