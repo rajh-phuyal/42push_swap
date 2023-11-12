@@ -53,6 +53,15 @@ and algorithmical thinking.
 |   100             |    615      |    570       |
 |   500             |    5100     |    4800      |
 
+
+### Visuals
+
+## **`100 values`**
+![100](https://github.com/rajh-phuyal/42push_swap/assets/117525743/f1a20e1d-e58d-4a2b-9b1f-fa9f23c6dee0)
+
+## **`500 values`**
+![500](https://github.com/rajh-phuyal/42push_swap/assets/117525743/71bc155f-af43-4bc1-bc79-9324b8cb86e7)
+
 ---
 
 ### Preparing for the algorithm
@@ -102,14 +111,6 @@ Push the second smallest number to stack A
 Push the smallest number to stack A
 ```
 
-### Logic 
-
-## **`100 values`**
-![100](https://github.com/rajh-phuyal/42push_swap/assets/117525743/f1a20e1d-e58d-4a2b-9b1f-fa9f23c6dee0)
-
-## **`500 values`**
-![500](https://github.com/rajh-phuyal/42push_swap/assets/117525743/71bc155f-af43-4bc1-bc79-9324b8cb86e7)
-
 The algorithm is divided into two parts:
 
 _`Sending chunks to stack B`_
@@ -140,9 +141,8 @@ _`Sending nodes back to stack A`_
 
 Sending back to stack A relies on the similar idea of the direction, cost and proximity of the nodes to the edge.
 But with a key difference, the difference being that APS is now calculating the cost and the direction for the
-`largest` and the `second largest` values in the stack B.
+`biggest` and the `second biggest` values in the stack B.
 
-**Cases:**
 _`APS keeps track of the last sent node to stack A`_
 ![pushswap](https://github.com/rajh-phuyal/42push_swap/assets/81531002/af1123ef-bc31-4552-b2bc-0a01e9347c57)
 
