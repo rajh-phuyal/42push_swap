@@ -48,19 +48,10 @@ and algorithmical thinking.
 
 
 ## Stats
-| **Number of elements** | Average result | Best result |
-| :----------------: | :---------: | :---------: |
-|   100             |    615      |    570       |
-|   500             |    5100     |    4800      |
-
-
-### Visuals
-
-## **`100 values`**
-![100](https://github.com/rajh-phuyal/42push_swap/assets/117525743/f1a20e1d-e58d-4a2b-9b1f-fa9f23c6dee0)
-
-## **`500 values`**
-![500](https://github.com/rajh-phuyal/42push_swap/assets/117525743/71bc155f-af43-4bc1-bc79-9324b8cb86e7)
+| **Number of elements** | Average result | Best result | Visual |
+| :----------------: | :---------: | :---------: | :---------: | 
+|   100             |    615      |    570       | ![100](https://github.com/rajh-phuyal/42push_swap/assets/117525743/f1a20e1d-e58d-4a2b-9b1f-fa9f23c6dee0) |
+|   500             |    5100     |    4800      | ![500](https://github.com/rajh-phuyal/42push_swap/assets/117525743/71bc155f-af43-4bc1-bc79-9324b8cb86e7) |
 
 ---
 
@@ -133,9 +124,9 @@ APS repeats the above steps for each chunk pair until the last one.
 For the last two chunks APS splits the chunks into two halves and sends the smaller numbers to the bottom
 of stack B and keeps larger numbers at the top.
 
-Now, APS has all the numbers in stack B chunked.
+Stack A has <10 numbers which are sorted using the `sort 3` and `sort 5` algorithms.
 
-=(insert the stack B image here)=
+Now, APS has all the numbers in stack B chunked and is ready to send it back to stack A.
 
 _`Sending nodes back to stack A`_
 
