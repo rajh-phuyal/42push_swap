@@ -13,8 +13,8 @@ The goal of this project is to sort data on a stack, with a limited set of instr
 But the implementation of the algorithm was done individually.
 We acheived 125/100 on this project.
 You can check both of our implementations here:
-- [**@AshParker19**](https://github.com/AshParker19)
-- [**@Rajh Phuyal**](https://github.com/rajh_phuyal)
+- [**@Rajh Phuyal**](https://github.com/rajh_phuyal/42Minishell)
+- [**@AshParker19**](https://github.com/AshParker19/42_minishell)
 
 
 ### Motivation
@@ -56,9 +56,9 @@ Dividing of the stack for chunks :
 | 100 | 12 | 8 | 4 |
 | 500 | 35 | 14 | 10 |
 
-_Remaining nodes on stack A less than 10 nodes left to be sorted differently_
+_Remaining nodes on stack A: <10 nodes left to be sorted differently_
 
-For the rest of the other size for stack we use the following formula:
+For the rest of the other sizes of stack we use the following formula:
 ```
 number of chunks = 10 % of stacksize
 chunksize = stacksize / number of chunks
@@ -66,7 +66,7 @@ chunksize = stacksize / number of chunks
 
 ## Sorting
 
-### Small Data Set <= 5 numbers
+### Small Data Set (<= 5 numbers)
 **Sorting 3 numbers :**
 ```
 Only few combinations of possibilities exist for sorting 3 numbers.
