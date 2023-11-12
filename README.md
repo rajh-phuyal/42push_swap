@@ -129,24 +129,9 @@ But with a key difference, the difference being that APS is now calculating the 
 
 **Cases:**
 _`APS keeps track of the last sent node to stack A`_
-
-(insert chart here)
-    Do the cases for sending the nodes from the stack B to Stack A
-        Also do the cases for sending the nodes from the stack A to Stack B
+![pushswap](https://github.com/rajh-phuyal/42push_swap/assets/81531002/af1123ef-bc31-4552-b2bc-0a01e9347c57)
 
 
-if last one was the largest:
-    if sending biggest:
-        keep on top
-        and rra all the second biggest nodes back to the top
-    else if sending second biggest:
-        swap the first two nodes
-
-else if the last one was second biggest:
-    if sending biggest:
-    else if sending second biggest:
-        ra to push the second biggest nodes down
-        push the biggest node
 
 ### Terminology
 - **APS** - Almighty Push Swap
