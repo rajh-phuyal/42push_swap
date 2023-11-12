@@ -201,3 +201,4 @@ make
 - [**Sorting Algorithms**](https://en.wikipedia.org/wiki/Sorting_algorithm)
 - [**Big O Notation**](https://en.wikipedia.org/wiki/Big_O_notation)
 - [**Push Swap Visualizer**](https://github.com/o-reo/push_swap_visualizer.git)
+- [**Push Swap Tester**](https://github.com/louisabricot/push_swap_tester)
