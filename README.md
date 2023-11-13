@@ -20,8 +20,8 @@ The goal of this project is to sort data on a stack, with a limited set of instr
 But the implementation of the algorithm was done individually.
 We acheived 125/100 on this project.
 You can check both of our implementations here:
-- [**@Rajh Phuyal**](https://github.com/rajh_phuyal/42push_swap)
-- [**@AshParker19**](https://github.com/AshParker19/42_minishell)
+- [**@Rajh Phuyal**]((https://github.com/rajh-phuyal/42push_swap))
+- [**@AshParker19**](https://github.com/AshParker19/42_push_swap)
 
 
 ### Motivation
